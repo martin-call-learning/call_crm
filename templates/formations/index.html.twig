@@ -9,9 +9,11 @@
 </style>
 
 <div class="content">
-    <h1>Formations</h1>
+    <h1 class="my-5">Formations</h1>
     <ul id="formation-list">
-
+        {% for formation in formations %}
+            {% include "components/formationItem.html.twig" with {formation} %}
+        {% endfor %}
     </ul>
 
 </div>

@@ -1,0 +1,15 @@
+<formation class="mb-5">
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Todo : Replace href by { formation_show } & add { set formation_show = path('formation_show') } -->
+            <h4>
+                <a href="#">{{ formation.name }}</a>
+            </h4>
+            {% if formation.description %}
+                <p>
+                    {{ formation.description|slice(0,130) ~ '...' }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</formation>
