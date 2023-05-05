@@ -91,10 +91,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud("Tous les étudiants", "", Student::class),
             MenuItem::linkToCrud("Ajouter unétudiant", "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
         ]);
-
-        yield MenuItem::subMenu('Utilisateurs', 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud("Tous les utilisateurs", "", User::class),
-            MenuItem::linkToCrud("Ajouter un utilisateurs", "fas fa-plus", User::class)->setAction(Crud::PAGE_NEW)
-        ]);
     }
 }
