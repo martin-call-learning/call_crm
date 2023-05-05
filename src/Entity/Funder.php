@@ -15,7 +15,7 @@ class Funder
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?organisation $orgid = null;
+    private ?Organisation $orgid = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -28,12 +28,12 @@ class Funder
         return $this->id;
     }
 
-    public function getOrgid(): ?organisation
+    public function getOrgid(): ?Organisation
     {
         return $this->orgid;
     }
 
-    public function setOrgid(organisation $orgid): self
+    public function setOrgid(Organisation $orgid): self
     {
         $this->orgid = $orgid;
 

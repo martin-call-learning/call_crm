@@ -24,7 +24,7 @@ class User
     private ?int $role = null;
 
     #[ORM\ManyToOne]
-    private ?contact $contactid = null;
+    private ?Contact $contactid = null;
 
     public function getId(): ?int
     {
@@ -67,12 +67,12 @@ class User
         return $this;
     }
 
-    public function getContactid(): ?contact
+    public function getContactid(): ?Contact
     {
         return $this->contactid;
     }
 
-    public function setContactid(?contact $contactid): self
+    public function setContactid(?Contact $contactid): self
     {
         $this->contactid = $contactid;
 

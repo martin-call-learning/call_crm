@@ -21,7 +21,7 @@ class Session
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?formationaction $actionid = null;
+    private ?FormationAction $actionid = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $startdate = null;
@@ -31,7 +31,7 @@ class Session
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?funder $funderid = null;
+    private ?Funder $funderid = null;
 
     public function __construct()
     {
@@ -67,12 +67,12 @@ class Session
         return $this;
     }
 
-    public function getActionid(): ?formationaction
+    public function getActionid(): ?FormationAction
     {
         return $this->actionid;
     }
 
-    public function setActionid(?formationaction $actionid): self
+    public function setActionid(?FormationAction $actionid): self
     {
         $this->actionid = $actionid;
 
@@ -103,12 +103,12 @@ class Session
         return $this;
     }
 
-    public function getFunderid(): ?funder
+    public function getFunderid(): ?Funder
     {
         return $this->funderid;
     }
 
-    public function setFunderid(?funder $funderid): self
+    public function setFunderid(?Funder $funderid): self
     {
         $this->funderid = $funderid;
 

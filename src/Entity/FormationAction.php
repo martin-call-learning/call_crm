@@ -15,7 +15,7 @@ class FormationAction
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?formation $formationid = null;
+    private ?Formation $formationid = null;
 
     #[ORM\Column]
     private ?\DateInterval $duration = null;

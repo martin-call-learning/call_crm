@@ -29,7 +29,7 @@ class Contact
     private ?string $address = null;
 
     #[ORM\ManyToOne]
-    private ?organisation $orgid = null;
+    private ?Organisation $orgid = null;
 
     public function getId(): ?int
     {
@@ -96,12 +96,12 @@ class Contact
         return $this;
     }
 
-    public function getOrgid(): ?organisation
+    public function getOrgid(): ?Organisation
     {
         return $this->orgid;
     }
 
-    public function setOrgid(?organisation $orgid): self
+    public function setOrgid(?Organisation $orgid): self
     {
         $this->orgid = $orgid;
 
