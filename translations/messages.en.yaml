@@ -1,0 +1,79 @@
+dashboard:
+  link:
+    dashboard: Dashboard
+    formation: Courses
+    formation_action: Formation actions
+    contact: Contacts
+    organisation: Organisations
+    funder: Funders
+    session: Sessions
+    student: Students
+
+  all:
+    formation: All courses
+    formation_action: All formation actions
+    contact: All contacts
+    organisation: All organisations
+    funder: All funders
+    session: All sessions
+    student: All students
+
+  add:
+    formation: Add course
+    formation_action: Add formation action
+    contact: Add contact
+    organisation: Add organisation
+    funder: Add funder
+    session: Add session
+    student: Add student
+
+contact:
+  id: Contact's ID
+  firstname: Firstname
+  lastname: Lastname
+  email: Email
+  phone: Contact's phone number
+  address: Contact's address
+  organisation: Contact's organisation
+
+formation:
+  id: Formation's ID
+  name: Formation's name
+  ref: Formation's reference
+  description: Formation's description
+
+formation_action:
+  id: Formation action's ID
+  duration: Formation action's duration
+  student_count: How many students in this formation action ?
+  price: How much this action formation costs ?
+
+funder:
+  id: Funder's id
+  organisation: Funder's organisation
+  name: Funder's name
+  type: Funder's type
+
+organisation:
+  id: Organisation's id
+  name: Organisation's name
+
+session:
+  id: Session's ID
+  student: Student affected to this session
+  formation_action: Formation action attached to this session
+  start_date: When does this session start ?
+  end_date: When does this session end ?
+  funder: Wich funder funds this session ?
+
+student:
+  id: Student's ID
+  contact: Student's contact
+
+user:
+  id: User's ID
+  username: Username
+  password: Password
+  role: User's role
+  contact: User's contact
+

@@ -1,0 +1,78 @@
+dashboard:
+  link:
+    dashboard: Dashboard
+    formation: Cours
+    formation_action: Actions de formation
+    contact: Contacts
+    organisation: Organisations
+    funder: Financeurs
+    session: Sessions
+    student: Étudiants
+
+  all:
+    formation: Tous les cours
+    formation_action: Toutes les actions de formation
+    contact: Tous les contacts
+    organisation: Toutes les organisations
+    funder: Tous les financeurs
+    session: Toutes les sessions
+    student: Tous les étudiants
+
+  add:
+    formation: Ajouter un cours
+    formation_action: Ajouter une action de formation
+    contact: Ajouter un contact
+    organisation: Ajouter une organisation
+    funder: Ajouter un financeur
+    session: Ajouter une session
+    student: Ajouter un étudiant
+
+contact:
+  id: ID du contact
+  firstname: Prénom
+  lastname: Nom de famille
+  email: Email
+  phone: Numéro de téléphone du contact
+  address: Adresse du contact
+  organisation: Organisation du contact
+
+formation:
+  id: ID de la formation
+  name: Nom de la formation
+  ref: Référence de la formation
+  description: Description de la formation
+
+formation_action:
+  id: ID de l'action de formation
+  duration: Durée de l'action de formation
+  student_count: Combien d'étudiants dans cette action de formation ?
+  price: Coût de cette action de formation ?
+
+funder:
+  id: ID du financeur
+  organisation: Organisation du financeur
+  name: Nom du financeur
+  type: Type de financeur
+
+organisation:
+  id: ID de l'organisation
+  name: Nom de l'organisation
+
+session:
+  id: ID de la session
+  student: Étudiant affecté à cette session
+  formation_action: Action de formation liée à cette session
+  start_date: Date de début de cette session ?
+  end_date: Date de fin de cette session ?
+  funder: Quel financeur finance cette session ?
+
+student:
+  id: ID de l'étudiant
+  contact: Contact de l'étudiant
+
+user:
+  id: ID de l'utilisateur
+  username: Nom d'utilisateur
+  password: Mot de passe
+  role: Rôle de l'utilisateur
+  contact: Contact de l'utilisateur

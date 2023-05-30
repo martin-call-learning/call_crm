@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Translation\Translator;
 
 class FormationActionCrudController extends AbstractCrudController
 {
@@ -20,10 +21,12 @@ class FormationActionCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield IntegerField::new("formationid");
-        yield DateTimeField::new("duration");
-        yield IntegerField::new("studentcount");
-        yield MoneyField::new('price')->setCurrency('EUR');
+        $translator = new Translator('fr_FR');
+
+        yield IntegerField::new($translator->trans('formation_action.id'));
+        yield DateTimeField::new($translator->trans('formation_action.duration'));
+        yield IntegerField::new($translator->trans('formation_action.student_count'));
+        yield MoneyField::new($translator->trans('formation_action.price'))->setCurrency('EUR');
 
     }
 }
