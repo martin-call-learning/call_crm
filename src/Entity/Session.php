@@ -17,25 +17,21 @@ class Session
     private ?int $id = null;
 
     #[ORM\ManyToMany(targetEntity: student::class)]
-    private Collection $studentid;
+    private Collection $students;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?FormationAction $actionid = null;
+    private ?FormationAction $formationAction = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $startdate = null;
+    private ?\DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $enddate = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Funder $funderid = null;
+    private ?\DateTimeInterface $endDate = null;
 
     public function __construct()
     {
-        $this->studentid = new ArrayCollection();
+        $this->students = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,72 +42,61 @@ class Session
     /**
      * @return Collection<int, student>
      */
-    public function getStudentid(): Collection
+    public function getStudents(): Collection
     {
-        return $this->studentid;
+        return $this->students;
     }
 
-    public function addStudentid(student $studentid): self
+    public function addStudent(student $student): self
     {
-        if (!$this->studentid->contains($studentid)) {
-            $this->studentid->add($studentid);
+        if (!$this->students->contains($student)) {
+            $this->students->add($student);
         }
 
         return $this;
     }
 
-    public function removeStudentid(student $studentid): self
+    public function removeStudent(student $student): self
     {
-        $this->studentid->removeElement($studentid);
+        $this->students->removeElement($student);
 
         return $this;
     }
 
-    public function getActionid(): ?FormationAction
+    public function getFormationAction(): ?FormationAction
     {
-        return $this->actionid;
+        return $this->formationAction;
     }
 
-    public function setActionid(?FormationAction $actionid): self
+    public function setFormationAction(?FormationAction $formationAction): self
     {
-        $this->actionid = $actionid;
+        $this->formationAction = $formationAction;
 
         return $this;
     }
 
     public function getStartdate(): ?\DateTimeInterface
     {
-        return $this->startdate;
+        return $this->startDate;
     }
 
-    public function setStartdate(\DateTimeInterface $startdate): self
+    public function setStartdate(\DateTimeInterface $startDate): self
     {
-        $this->startdate = $startdate;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
     public function getEnddate(): ?\DateTimeInterface
     {
-        return $this->enddate;
+        return $this->endDate;
     }
 
-    public function setEnddate(\DateTimeInterface $enddate): self
+    public function setEnddate(\DateTimeInterface $endDate): self
     {
-        $this->enddate = $enddate;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function getFunderid(): ?Funder
-    {
-        return $this->funderid;
-    }
-
-    public function setFunderid(?Funder $funderid): self
-    {
-        $this->funderid = $funderid;
-
-        return $this;
-    }
 }
