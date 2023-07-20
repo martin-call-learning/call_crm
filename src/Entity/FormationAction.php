@@ -15,7 +15,7 @@ class FormationAction
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Formation $formationid = null;
+    private ?Formation $formation = null;
 
     #[ORM\Column]
     private ?\DateInterval $duration = null;
@@ -23,22 +23,31 @@ class FormationAction
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $expectedStudentCount = null;
+
     #[ORM\Column]
-    private ?int $studentcount = null;
+    private ?bool $remote = false;
+
+    #[ORM\Column]
+    private ?bool $presential = false;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $levelRequired = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFormationid(): ?formation
+    public function getFormation(): ?formation
     {
         return $this->formationid;
     }
 
-    public function setFormationid(?formation $formationid): self
+    public function setFormation(?formation $formation): self
     {
-        $this->formationid = $formationid;
+        $this->formation = $formation;
 
         return $this;
     }
@@ -67,14 +76,50 @@ class FormationAction
         return $this;
     }
 
-    public function getStudentcount(): ?int
+    public function getExpectedStudentCount(): ?int
     {
-        return $this->studentcount;
+        return $this->expectedStudentCount;
     }
 
-    public function setStudentcount(int $studentcount): self
+    public function setExpectedStudentCount(?int $expectedStudentCount): self
     {
-        $this->studentcount = $studentcount;
+        $this->expectedStudentCount = $expectedStudentCount;
+
+        return $this;
+    }
+
+    public function isRemote(): ?bool
+    {
+        return $this->remote;
+    }
+
+    public function setRemote(bool $remote): self
+    {
+        $this->remote = $remote;
+
+        return $this;
+    }
+
+    public function isPresential(): ?bool
+    {
+        return $this->presential;
+    }
+
+    public function setPresential(bool $presential): self
+    {
+        $this->presential = $presential;
+
+        return $this;
+    }
+
+    public function getLevelRequired(): ?int
+    {
+        return $this->levelRequired;
+    }
+
+    public function setLevelRequired(?int $levelRequired): self
+    {
+        $this->levelRequired = $levelRequired;
 
         return $this;
     }
