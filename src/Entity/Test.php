@@ -23,6 +23,10 @@ class Test
     #[ORM\JoinColumn(nullable: false)]
     private ?Skill $skill = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tests')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Student $student = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +64,18 @@ class Test
     public function setSkill(?Skill $skill): self
     {
         $this->skill = $skill;
+
+        return $this;
+    }
+
+    public function getStudent(): ?Student
+    {
+        return $this->student;
+    }
+
+    public function setStudent(?Student $student): self
+    {
+        $this->student = $student;
 
         return $this;
     }
