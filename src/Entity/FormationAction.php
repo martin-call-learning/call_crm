@@ -42,7 +42,7 @@ class FormationAction
 
     public function getFormation(): ?formation
     {
-        return $this->formationid;
+        return $this->formation;
     }
 
     public function setFormation(?formation $formation): self
