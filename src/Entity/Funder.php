@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FunderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FunderRepository::class)]
@@ -15,13 +17,18 @@ class Funder
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Organisation $orgid = null;
+    private ?Organisation $organisation = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $fundingtype = null;
+    #[ORM\ManyToMany(targetEntity: FundingType::class, inversedBy: 'funders')]
+    private Collection $fundingType;
+
+    public function __construct()
+    {
+        $this->fundingType = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -33,9 +40,9 @@ class Funder
         return $this->orgid;
     }
 
-    public function setOrgid(Organisation $orgid): self
+    public function setOrgid(Organisation $organisation): self
     {
-        $this->orgid = $orgid;
+        $this->orgid = $organisation;
 
         return $this;
     }
@@ -52,14 +59,18 @@ class Funder
         return $this;
     }
 
-    public function getFundingtype(): ?int
+    public function addFundingType(FundingType $fundingType): self
     {
-        return $this->fundingtype;
+        if (!$this->fundingType->contains($fundingType)) {
+            $this->fundingType->add($fundingType);
+        }
+
+        return $this;
     }
 
-    public function setFundingtype(?int $fundingtype): self
+    public function removeFundingType(FundingType $fundingType): self
     {
-        $this->fundingtype = $fundingtype;
+        $this->fundingType->removeElement($fundingType);
 
         return $this;
     }

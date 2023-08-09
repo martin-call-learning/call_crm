@@ -21,14 +21,13 @@ class FunderCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
         return [
             IdField::new($translator->trans('funder.id')),
             ChoiceField::new($translator->trans('funder.organisation')),
             TextField::new($translator->trans('funder.name')),
-            IntegerField::new($translator->trans('funder.type')),
+            ChoiceField::new($translator->trans('funder.type')),
         ];
     }
 }
