@@ -21,7 +21,7 @@ class StudentCrudController extends AbstractCrudEntityController
         $translator = new Translator('fr_FR');
 
         return array_merge((array) parent::configureFields($pageName), [
-            ChoiceField::new('contact')
+            ChoiceField::new('contact', $translator->trans('student.contact'))
         ]);
     }
 }

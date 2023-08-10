@@ -22,9 +22,9 @@ class FunderCrudController extends AbstractCrudEntityController
         $translator = new Translator('fr_FR');
 
         return array_merge((array) parent::configureFields($pageName),[
-            TextField::new('name'),
-            ChoiceField::new('organisation'),
-            ChoiceField::new('fundingType'),
+            TextField::new('name', $translator->trans('funder.name')),
+            ChoiceField::new('organisation', $translator->trans('funder.organisation')),
+            ChoiceField::new('fundingType', $translator->trans('funder.type')),
         ]);
     }
 }

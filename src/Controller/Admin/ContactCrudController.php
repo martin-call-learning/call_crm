@@ -21,13 +21,15 @@ class ContactCrudController extends AbstractCrudEntityController
 
     public function configureFields(string $pageName): iterable
     {
+        $translator = new Translator('fr_FR');
+
         return array_merge((array) parent::configureFields($pageName),[
-            TextField::new('firstname'),
-            TextField::new('lastname'),
-            TextField::new('email'),
-            TelephoneField::new('phonenumber'),
-            TextField::new('address'),
-            ChoiceField::new('organisation')
+            TextField::new('firstname', $translator->trans('contact.firstname')),
+            TextField::new('lastname', $translator->trans('contact.lastname')),
+            TextField::new('email', $translator->trans('contact.email')),
+            TelephoneField::new('phoneNumber', $translator->trans('contact.phone')),
+            TextField::new('address', $translator->trans('contact.address')),
+            ChoiceField::new('organisation', $translator->trans('contact.organisation'))
         ]);
     }
 }

@@ -25,10 +25,10 @@ class UserCrudController extends AbstractCrudEntityController
         $translator = new Translator('fr_FR');
 
         return array_merge((array) parent::configureFields($pageName), [
-            TextField::new('username'),
-            TextField::new('password')->setFormType(PasswordType::class),
-            ChoiceField::new('role')->autocomplete(),
-            ChoiceField::new('contact')->autocomplete()
+            TextField::new('username', $translator->trans('user.username')),
+            TextField::new('password', $translator->trans('user.password'))->setFormType(PasswordType::class),
+            ChoiceField::new('role', $translator->trans('user.role'))->autocomplete(),
+            ChoiceField::new('contact', $translator->trans('user.contact'))->autocomplete()
         ]);
     }
 }

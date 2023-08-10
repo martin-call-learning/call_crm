@@ -9,6 +9,8 @@ dashboard:
     session: Sessions
     student: Étudiants
     fundingType: Types de financement
+    skill: Compétences
+    test: Evaluations
 
   show:
     formation: Afficher les cours
@@ -19,6 +21,8 @@ dashboard:
     session: Afficher les sessions
     student: Afficher les étudiants
     fundingType: Afficher les types de financement
+    skill: Afficher les compétences
+    test: Afficher les évaluations
 
   add:
     formation: Ajouter un cours
@@ -29,9 +33,12 @@ dashboard:
     session: Ajouter une session
     student: Ajouter un étudiant
     fundingType: Ajouter un type de financement
+    skill: Ajouter une compétence
+    test: Ajouter une évaluation
 
 sections:
   formations: Formations
+  students: Étudiants
   customers: Clients
 
 contact:
@@ -69,6 +76,9 @@ funder:
   name: Nom du financeur
   type: Type de financeur
 
+funding_type:
+  name: Nom du type de financeur
+
 organisation:
   id: ID de l'organisation
   name: Nom de l'organisation
@@ -91,3 +101,6 @@ user:
   password: Mot de passe
   role: Rôle de l'utilisateur
   contact: Contact de l'utilisateur
+
+skill:
+  name: Nom de la compétence

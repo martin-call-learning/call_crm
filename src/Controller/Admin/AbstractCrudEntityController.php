@@ -22,7 +22,7 @@ abstract class AbstractCrudEntityController extends AbstractCrudController {
      * @return void
      */
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void {
-        if($entityInstance instanceof CrudEntity){
+        if(in_array(CrudEntity::class, class_uses($entityInstance::class), true)){
             $entityInstance->setCreatedAt(new DateTimeImmutable);
             parent::persistEntity($entityManager, $entityInstance);
         }
@@ -53,7 +53,6 @@ abstract class AbstractCrudEntityController extends AbstractCrudController {
     public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void {
         if($entityInstance instanceof CrudEntity){
             $entityInstance->setDeletedAt(new DateTimeImmutable());
-
             parent::updateEntity($entityManager, $entityInstance); // Todo: see if we can use the parent::deleteEntity method instead.
         }
     }

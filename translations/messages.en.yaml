@@ -9,6 +9,8 @@ dashboard:
     session: Sessions
     student: Students
     fundingType: Funding types
+    skill: Skills
+    test: Tests
 
   show:
     formation: Show formations
@@ -19,6 +21,8 @@ dashboard:
     session: Show sessions
     student: Show students
     fundingType: Show funding types
+    skill: Show skills
+    test: Show tests
 
   add:
     formation: Add formation
@@ -29,10 +33,13 @@ dashboard:
     session: Add session
     student: Add student
     fundingType: Add a funding type
+    skill: Add a skill
+    test: Add a test
 
 sections:
   formations: Formations
   customers: Customers
+  students: Students
 
 contact:
   id: Contact's ID
@@ -66,7 +73,10 @@ funder:
   id: Funder's id
   organisation: Funder's organisation
   name: Funder's name
-  type: Funder's type
+  type: Funding type
+
+funding_type:
+  name: Funding type's name
 
 organisation:
   id: Organisation's id
@@ -90,4 +100,13 @@ user:
   password: Password
   role: User's role
   contact: User's contact
+
+skill:
+  name: Skill's name
+
+test:
+  name: Test's name
+  skill: Test's skill
+  student: Test's student
+  score: Test
 

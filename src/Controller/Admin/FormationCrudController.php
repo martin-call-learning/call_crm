@@ -18,17 +18,16 @@ class FormationCrudController extends AbstractCrudEntityController
 
     public function configureFields(string $pageName): iterable
     {
-        // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
         return array_merge((array) parent::configureFields($pageName), [
-            TextField::new('name'),
-            TextField::new('code'),
-            TextEditorField::new('globalGoal'),
-            TextEditorField::new('pedaGoal'),
-            TextEditorField::new('content'),
-            TextEditorField::new('highlights'),
-            TextEditorField::new('expectedResults')
+            TextField::new('name', $translator->trans('formation.name')),
+            TextField::new('code', $translator->trans('formation.code')),
+            TextEditorField::new('globalGoal', $translator->trans('formation.globalGoal')),
+            TextEditorField::new('pedaGoal', $translator->trans('formation.pedaGoal')),
+            TextEditorField::new('content', $translator->trans('formation.content')),
+            TextEditorField::new('highlights', $translator->trans('formation.highlights')),
+            TextEditorField::new('expectedResults', $translator->trans('formation.expectedResults'))
             ]);
     }
 }

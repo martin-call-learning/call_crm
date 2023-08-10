@@ -78,14 +78,27 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud($translator->trans("dashboard.add.session"), "fas fa-plus", Session::class)->setAction(Crud::PAGE_NEW)
         ]);
 
-        // #### Customers ####
+        // #### Students ####
 
-        yield MenuItem::section($translator->trans('sections.customers'));
+        yield MenuItem::section($translator->trans('sections.students'));
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.student"), 'fas fa-list')->setSubItems([
             MenuItem::linkToCrud($translator->trans("dashboard.show.student"), "fas fa-eye", Student::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.student"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
         ]);
+
+        yield MenuItem::subMenu($translator->trans("dashboard.link.skill"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.skill"), "fas fa-eye", Student::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.skill"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
+        yield MenuItem::subMenu($translator->trans("dashboard.link.test"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.test"), "fas fa-eye", Student::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.test"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
+
+        yield MenuItem::section($translator->trans('section.customers'));
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.contact"), 'fas fa-list')->setSubItems([
             MenuItem::linkToCrud($translator->trans("dashboard.show.contact"), "fas fa-eye", Contact::class),
