@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\FunderTypeRepository;
+use App\Repository\FundingTypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: FunderTypeRepository::class)]
+#[ORM\Entity(repositoryClass: FundingTypeRepository::class)]
 class FundingType
 {
     #[ORM\Id]
