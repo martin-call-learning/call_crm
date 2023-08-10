@@ -39,14 +39,21 @@ contact:
 formation:
   id: Formation's ID
   name: Formation's name
-  ref: Formation's reference
-  description: Formation's description
+  code: Formation's code
+  globalGoal: Formation's global goal
+  pedaGoal: Formation's pedagogical goal
+  content: Formation's content
+  highlights: Formation's highlights
+  expectedResults: The results expected at the end of the formation
 
 formation_action:
   id: Formation action's ID
   duration: Formation action's duration
-  student_count: How many students in this formation action ?
+  expected_student_count: How many students expected in this formation action ?
   price: How much this action formation costs ?
+  remote: Is the formation action remote ?
+  presential: Is the formation action presential ?
+  level_required: What is the level required of this formation action ?
 
 funder:
   id: Funder's id

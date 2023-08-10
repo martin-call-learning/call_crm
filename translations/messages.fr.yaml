@@ -39,14 +39,22 @@ contact:
 formation:
   id: ID de la formation
   name: Nom de la formation
-  ref: Référence de la formation
-  description: Description de la formation
+  code: Code de la formation
+  globalGoal: Objectif général de la formation
+  pedaGoal: Objectif pédagogique de la formation
+  content: Contenu de la formation
+  highlights: Points importants de la formation
+  expectedResults: Résultats attendus à la fin de la formation
+
 
 formation_action:
   id: ID de l'action de formation
   duration: Durée de l'action de formation
-  student_count: Combien d'étudiants dans cette action de formation ?
+  expected_student_count: Combien d'étudiants sont attendus dans cette action de formation ?
   price: Coût de cette action de formation ?
+  remote: L'action de formation se déroule-t-elle en distanciel ?
+  presential: L'action de formation se déroule-t-elle en présentiel ?
+  level_required: Quel est le niveau requis pour cette action de formation ?
 
 funder:
   id: ID du financeur
