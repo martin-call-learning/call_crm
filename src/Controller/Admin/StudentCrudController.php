@@ -8,7 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use Symfony\Component\Translation\Translator;
 
-class StudentCrudController extends AbstractCustomCrudController
+class StudentCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {

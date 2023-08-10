@@ -9,7 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
-class FormationCrudController extends AbstractCustomCrudController
+class FormationCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {

@@ -9,7 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 
-class FormationActionCrudController extends AbstractCustomCrudController
+class FormationActionCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {

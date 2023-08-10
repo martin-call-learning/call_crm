@@ -6,8 +6,11 @@ use App\Repository\FormationActionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FormationActionRepository::class)]
-class FormationAction extends CrudEntity
+class FormationAction
 {
+
+    use CrudEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

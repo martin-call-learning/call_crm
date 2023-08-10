@@ -7,8 +7,10 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
-class Contact extends CrudEntity
+class Contact
 {
+
+    use CrudEntity;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,7 +26,7 @@ class Contact extends CrudEntity
     private ?string $email = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $phonenumber = null;
+    private ?int $phoneNumber = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
@@ -73,14 +75,14 @@ class Contact extends CrudEntity
         return $this;
     }
 
-    public function getPhonenumber(): ?int
+    public function getPhoneNumber(): ?int
     {
-        return $this->phonenumber;
+        return $this->phoneNumber;
     }
 
-    public function setPhonenumber(?int $phonenumber): self
+    public function setPhoneNumber(?int $phoneNumber): self
     {
-        $this->phonenumber = $phonenumber;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }

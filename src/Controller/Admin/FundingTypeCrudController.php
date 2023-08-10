@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class FundingTypeCrudController extends AbstractCustomCrudController
+class FundingTypeCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {

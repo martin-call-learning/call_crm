@@ -11,7 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Translation\Translator;
 
-class UserCrudController extends AbstractCustomCrudController
+class UserCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {

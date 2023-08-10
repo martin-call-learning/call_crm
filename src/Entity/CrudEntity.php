@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * This class has to be extended by every CRUD entity. It allows to monitor createdAt, updatedAt and deletedAt attributes.
  */
-abstract class CrudEntity {
+trait CrudEntity {
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?DateTimeImmutable $createdAt = null;
 
 

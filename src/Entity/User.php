@@ -8,8 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User extends CrudEntity
+class User
 {
+
+    use CrudEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -25,7 +28,7 @@ class User extends CrudEntity
     private ?int $role = null;
 
     #[ORM\ManyToOne]
-    private ?Contact $contactid = null;
+    private ?Contact $contact = null;
 
     public function getId(): ?int
     {
@@ -68,14 +71,14 @@ class User extends CrudEntity
         return $this;
     }
 
-    public function getContactid(): ?Contact
+    public function getContact(): ?Contact
     {
-        return $this->contactid;
+        return $this->contact;
     }
 
-    public function setContactid(?Contact $contactid): self
+    public function setContact(?Contact $contact): self
     {
-        $this->contactid = $contactid;
+        $this->contact = $contact;
 
         return $this;
     }

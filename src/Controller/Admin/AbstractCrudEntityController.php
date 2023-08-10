@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\CrudEntity;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -13,7 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 /**
  * This implementation of AbstractCrudController automates the create, updated and deleted at attributes for every entity.
  */
-abstract class AbstractCustomCrudController extends AbstractCrudController {
+abstract class AbstractCrudEntityController extends AbstractCrudController {
 
     /**
      * This methods sets the createdAt attribute for a CrudEntity when creating it.
@@ -24,14 +23,13 @@ abstract class AbstractCustomCrudController extends AbstractCrudController {
      */
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void {
         if($entityInstance instanceof CrudEntity){
-            $entityInstance->setCreatedAt(new DateTimeImmutable());
-
+            $entityInstance->setCreatedAt(new DateTimeImmutable);
             parent::persistEntity($entityManager, $entityInstance);
         }
     }
 
     /**
-     * This methods sets the updtaedAt attribute for a CrudEntity when updating it.
+     * This methods sets the updatedAt attribute for a CrudEntity when updating it.
      *
      * @param EntityManagerInterface $entityManager
      * @param $entityInstance

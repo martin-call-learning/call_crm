@@ -6,8 +6,11 @@ use App\Repository\OrganisationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrganisationRepository::class)]
-class Organisation extends CrudEntity
+class Organisation
 {
+
+    use CrudEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

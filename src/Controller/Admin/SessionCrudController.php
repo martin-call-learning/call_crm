@@ -10,7 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use Symfony\Component\Translation\Translator;
 
-class SessionCrudController extends AbstractCustomCrudController
+class SessionCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {

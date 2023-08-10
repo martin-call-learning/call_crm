@@ -11,7 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
 
-class ContactCrudController extends AbstractCustomCrudController
+class ContactCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {
