@@ -22,10 +22,14 @@ class FormationCrudController extends AbstractCrudController
         $translator = new Translator('fr_FR');
 
         return [
-            IdField::new('id'),
+            IdField::new($translator->trans('formation.id')),
             TextField::new($translator->trans('formation.name')),
-            TextField::new($translator->trans('formation.ref')),
-            TextEditorField::new($translator->trans('formation.description')),
-        ];
+            TextField::new($translator->trans('formation.code')),
+            TextEditorField::new($translator->trans('formation.globalGoal')),
+            TextEditorField::new($translator->trans('formation.pedaGoal')),
+            TextEditorField::new($translator->trans('formation.content')),
+            TextEditorField::new($translator->trans('formation.highlights')),
+            TextEditorField::new($translator->trans('formation.expectedResults'))
+            ];
     }
 }
