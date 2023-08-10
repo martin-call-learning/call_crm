@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Formation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -22,14 +23,18 @@ class FormationCrudController extends AbstractCrudController
         $translator = new Translator('fr_FR');
 
         return [
-            IdField::new($translator->trans('formation.id')),
-            TextField::new($translator->trans('formation.name')),
-            TextField::new($translator->trans('formation.code')),
-            TextEditorField::new($translator->trans('formation.globalGoal')),
-            TextEditorField::new($translator->trans('formation.pedaGoal')),
-            TextEditorField::new($translator->trans('formation.content')),
-            TextEditorField::new($translator->trans('formation.highlights')),
-            TextEditorField::new($translator->trans('formation.expectedResults'))
+            IdField::new('id')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('deletedAt')->hideOnForm(),
+
+            TextField::new('name'),
+            TextField::new('code'),
+            TextEditorField::new('globalGoal'),
+            TextEditorField::new('pedaGoal'),
+            TextEditorField::new('content'),
+            TextEditorField::new('highlights'),
+            TextEditorField::new('expectedResults')
             ];
     }
 }

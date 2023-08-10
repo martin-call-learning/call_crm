@@ -30,7 +30,7 @@ class Contact
     private ?string $address = null;
 
     #[ORM\ManyToOne]
-    private ?Organisation $orgid = null;
+    private ?Organisation $organisation = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -144,14 +144,14 @@ class Contact
         return $this;
     }
 
-    public function getOrgid(): ?Organisation
+    public function getOrganisation(): ?Organisation
     {
-        return $this->orgid;
+        return $this->organisation;
     }
 
-    public function setOrgid(?Organisation $orgid): self
+    public function setOrganisation(?Organisation $organisation): self
     {
-        $this->orgid = $orgid;
+        $this->organisation = $organisation;
 
         return $this;
     }

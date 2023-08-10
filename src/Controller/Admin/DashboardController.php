@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Entity\Formation;
 use App\Entity\FormationAction;
 use App\Entity\Funder;
+use App\Entity\FundingType;
 use App\Entity\Organisation;
 use App\Entity\Session;
 use App\Entity\Student;
@@ -50,7 +51,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Call Crm');
+            ->setTitle('Cshow Crm');
     }
 
     public function configureMenuItems(): iterable
@@ -59,39 +60,51 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToDashboard($translator->trans('dashboard.link.dashboard'), 'fa fa-home');
 
+        yield MenuItem::section($translator->trans('sections.formations'));
+
         yield MenuItem::subMenu($translator->trans('dashboard.link.formation'), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans('dashboard.all.formation'), "", Formation::class),
+            MenuItem::linkToCrud($translator->trans('dashboard.show.formation'), "fas fa-eye", Formation::class),
             MenuItem::linkToCrud($translator->trans('dashboard.add.formation'), "fas fa-plus", Formation::class)->setAction(Crud::PAGE_NEW)
             ]);
 
         yield MenuItem::subMenu($translator->trans('dashboard.link.formation_action'), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.all.formation_action"), "", FormationAction::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.show.formation_action"), "fas fa-eye", FormationAction::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.formation_action"), "fas fa-plus", FormationAction::class)->setAction(Crud::PAGE_NEW)
         ]);
 
+
+        yield MenuItem::subMenu($translator->trans("dashboard.link.session"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.session"), "fas fa-eye", Session::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.session"), "fas fa-plus", Session::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
+        // #### Customers ####
+
+        yield MenuItem::section($translator->trans('sections.customers'));
+
+        yield MenuItem::subMenu($translator->trans("dashboard.link.student"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.student"), "fas fa-eye", Student::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.student"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
         yield MenuItem::subMenu($translator->trans("dashboard.link.contact"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.all.contact"), "", Contact::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.show.contact"), "fas fa-eye", Contact::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.contact"), "fas fa-plus", Contact::class)->setAction(Crud::PAGE_NEW)
         ]);
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.organisation"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.all.organisation"), "", Organisation::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.show.organisation"), "fas fa-eye", Organisation::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.organisation"), "fas fa-plus", Organisation::class)->setAction(Crud::PAGE_NEW)
         ]);
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.funder"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.all.funder"), "", Funder::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.show.funder"), "fas fa-eye", Funder::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.funder"), "fas fa-plus", Funder::class)->setAction(Crud::PAGE_NEW)
         ]);
 
-        yield MenuItem::subMenu($translator->trans("dashboard.link.session"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.all.session"), "", Session::class),
-            MenuItem::linkToCrud($translator->trans("dashboard.add.session"), "fas fa-plus", Session::class)->setAction(Crud::PAGE_NEW)
-        ]);
-
-        yield MenuItem::subMenu($translator->trans("dashboard.link.student"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.all.student"), "", Student::class),
-            MenuItem::linkToCrud($translator->trans("dashboard.add.student"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
+        yield MenuItem::subMenu($translator->trans("dashboard.link.fundingType"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.fundingType"), "fas fa-eye", FundingType::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.fundingType"), "fas fa-plus", FundingType::class)->setAction(Crud::PAGE_NEW)
         ]);
     }
 }

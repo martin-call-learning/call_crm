@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -25,11 +26,15 @@ class UserCrudController extends AbstractCrudController
         $translator = new Translator('fr_FR');
 
         return [
-            IdField::new($translator->trans('user.id')),
-            TextField::new($translator->trans('user.username')),
-            TextField::new($translator->trans('user.password'))->setFormType(PasswordType::class),
-            ChoiceField::new($translator->trans('user.role'))->autocomplete(),
-            ChoiceField::new($translator->trans('user.contact'))->autocomplete(),
+            IdField::new('id')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('deletedAt')->hideOnForm(),
+
+            TextField::new('username'),
+            TextField::new('password')->setFormType(PasswordType::class),
+            ChoiceField::new('role')->autocomplete(),
+            ChoiceField::new('contact')->autocomplete()
         ];
     }
 }

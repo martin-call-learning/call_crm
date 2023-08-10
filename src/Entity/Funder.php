@@ -121,4 +121,22 @@ class Funder
 
         return $this;
     }
+
+    public function getFundingType():Collection {
+        return $this->fundingType;
+    }
+
+    /**
+     * @return Organisation|null
+     */
+    public function getOrganisation(): ?Organisation {
+        return $this->organisation;
+    }
+
+    /**
+     * @param Organisation|null $organisation
+     */
+    public function setOrganisation(?Organisation $organisation): void {
+        $this->organisation = $organisation;
+    }
 }

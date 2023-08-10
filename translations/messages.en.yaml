@@ -1,31 +1,38 @@
 dashboard:
   link:
     dashboard: Dashboard
-    formation: Courses
+    formation: Formations
     formation_action: Formation actions
     contact: Contacts
     organisation: Organisations
     funder: Funders
     session: Sessions
     student: Students
+    fundingType: Funding types
 
-  all:
-    formation: All courses
-    formation_action: All formation actions
-    contact: All contacts
-    organisation: All organisations
-    funder: All funders
-    session: All sessions
-    student: All students
+  show:
+    formation: Show formations
+    formation_action: Show formation actions
+    contact: Show contacts
+    organisation: Show organisations
+    funder: Show funders
+    session: Show sessions
+    student: Show students
+    fundingType: Show funding types
 
   add:
-    formation: Add course
+    formation: Add formation
     formation_action: Add formation action
     contact: Add contact
     organisation: Add organisation
     funder: Add funder
     session: Add session
     student: Add student
+    fundingType: Add a funding type
+
+sections:
+  formations: Formations
+  customers: Customers
 
 contact:
   id: Contact's ID

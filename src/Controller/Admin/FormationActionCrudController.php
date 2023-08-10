@@ -24,14 +24,18 @@ class FormationActionCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        $translator = new Translator('fr_FR');
+        return [
+            IdField::new('id')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('deletedAt')->hideOnForm(),
 
-        yield IdField::new($translator->trans('formation_action.id'));
-        yield DateTimeField::new($translator->trans('formation_action.duration'));
-        yield IntegerField::new($translator->trans('formation_action.expected_student_count'));
-        yield MoneyField::new($translator->trans('formation_action.price'))->setCurrency('EUR');
-        yield BooleanField::new($translator->trans('formation_action.remote'));
-        yield BooleanField::new($translator->trans('formation_action.presential'));
-        yield IntegerField::new($translator->trans('formation_action.level_required'));
+            DateTimeField::new('duration'),
+            IntegerField::new('expected_student_count'),
+            MoneyField::new('price')->setCurrency('EUR'),
+            BooleanField::new('remote'),
+            BooleanField::new('presential'),
+            IntegerField::new('level_required')
+        ];
     }
 }

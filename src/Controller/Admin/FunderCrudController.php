@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Funder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -24,10 +25,14 @@ class FunderCrudController extends AbstractCrudController
         $translator = new Translator('fr_FR');
 
         return [
-            IdField::new($translator->trans('funder.id')),
-            ChoiceField::new($translator->trans('funder.organisation')),
-            TextField::new($translator->trans('funder.name')),
-            ChoiceField::new($translator->trans('funder.type')),
+            IdField::new('id')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('deletedAt')->hideOnForm(),
+
+            TextField::new('name'),
+            ChoiceField::new('organisation'),
+            ChoiceField::new('fundingType'),
         ];
     }
 }

@@ -8,15 +8,17 @@ dashboard:
     funder: Financeurs
     session: Sessions
     student: Étudiants
+    fundingType: Types de financement
 
-  all:
-    formation: Tous les cours
-    formation_action: Toutes les actions de formation
-    contact: Tous les contacts
-    organisation: Toutes les organisations
-    funder: Tous les financeurs
-    session: Toutes les sessions
-    student: Tous les étudiants
+  show:
+    formation: Afficher les cours
+    formation_action: Afficher les actions de formation
+    contact: Afficher les contacts
+    organisation: Afficher les organisations
+    funder: Afficher les financeurs
+    session: Afficher les sessions
+    student: Afficher les étudiants
+    fundingType: Afficher les types de financement
 
   add:
     formation: Ajouter un cours
@@ -26,6 +28,11 @@ dashboard:
     funder: Ajouter un financeur
     session: Ajouter une session
     student: Ajouter un étudiant
+    fundingType: Ajouter un type de financement
+
+sections:
+  formations: Formations
+  customers: Clients
 
 contact:
   id: ID du contact

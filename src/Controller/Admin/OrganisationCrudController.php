@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Organisation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
@@ -20,8 +21,12 @@ class OrganisationCrudController extends AbstractCrudController
         $translator = new Translator('fr_FR');
 
         return [
-            IdField::new($translator->trans('organisation.id')),
-            TextField::new($translator->trans('organisation.name')),
+            IdField::new('id')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('deletedAt')->hideOnForm(),
+
+            TextField::new('name'),
         ];
     }
 }
