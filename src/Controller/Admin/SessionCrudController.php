@@ -23,17 +23,12 @@ class SessionCrudController extends AbstractCustomCrudController
         // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
-        return [
-            IdField::new('id')->hideOnForm(),
-            DateTimeField::new('createdAt')->hideOnForm(),
-            DateTimeField::new('updatedAt')->hideOnForm(),
-            DateTimeField::new('deletedAt')->hideOnForm(),
-
+        return array_merge((array) parent::configureFields($pageName), [
             ArrayField::new("students"),
             ChoiceField::new('formationAction'),
             DateField::new('startDate'),
             DateField::new('endDate'),
             // Todo : ChoiceField::new('funder') Has the funder to be in this CRUD Controller ??
-        ];
+        ]);
     }
 }

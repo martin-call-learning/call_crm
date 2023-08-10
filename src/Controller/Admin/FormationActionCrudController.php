@@ -19,18 +19,13 @@ class FormationActionCrudController extends AbstractCustomCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->hideOnForm(),
-            DateTimeField::new('createdAt')->hideOnForm(),
-            DateTimeField::new('updatedAt')->hideOnForm(),
-            DateTimeField::new('deletedAt')->hideOnForm(),
-
+        return array_merge((array) parent::configureFields($pageName),[
             DateTimeField::new('duration'),
             IntegerField::new('expected_student_count'),
             MoneyField::new('price')->setCurrency('EUR'),
             BooleanField::new('remote'),
             BooleanField::new('presential'),
             IntegerField::new('level_required')
-        ];
+        ]);
     }
 }

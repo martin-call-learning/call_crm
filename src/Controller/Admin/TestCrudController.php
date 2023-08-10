@@ -18,16 +18,11 @@ class TestCrudController extends AbstractCustomCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->hideOnForm(),
-            DateTimeField::new('createdAt')->hideOnForm(),
-            DateTimeField::new('updatedAt')->hideOnForm(),
-            DateTimeField::new('deletedAt')->hideOnForm(),
-
+        return array_merge((array) parent::configureFields($pageName),[
             TextField::new('name'),
             ChoiceField::new('skill'),
             ChoiceField::new('student'),
             IntegerField::new('score'),
-        ];
+        ]);
     }
 }

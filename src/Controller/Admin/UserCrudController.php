@@ -24,16 +24,11 @@ class UserCrudController extends AbstractCustomCrudController
         // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
-        return [
-            IdField::new('id')->hideOnForm(),
-            DateTimeField::new('createdAt')->hideOnForm(),
-            DateTimeField::new('updatedAt')->hideOnForm(),
-            DateTimeField::new('deletedAt')->hideOnForm(),
-
+        return array_merge((array) parent::configureFields($pageName), [
             TextField::new('username'),
             TextField::new('password')->setFormType(PasswordType::class),
             ChoiceField::new('role')->autocomplete(),
             ChoiceField::new('contact')->autocomplete()
-        ];
+        ]);
     }
 }
