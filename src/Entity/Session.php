@@ -34,11 +34,11 @@ class Session
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column]
-    private ?DateTimeImmutable $deletedAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $deletedAt = null;
 
-    #[ORM\Column]
-    private ?DateTimeImmutable $updatedAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
 
     public function getCreatedAt(): ?DateTimeImmutable
