@@ -3,13 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Organisation;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
-class OrganisationCrudController extends AbstractCrudController
+class OrganisationCrudController extends AbstractCustomCrudController
 {
     public static function getEntityFqcn(): string
     {

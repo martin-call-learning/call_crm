@@ -3,17 +3,15 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Contact;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
 
-class ContactCrudController extends AbstractCrudController
+class ContactCrudController extends AbstractCustomCrudController
 {
     public static function getEntityFqcn(): string
     {

@@ -3,13 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Student;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use Symfony\Component\Translation\Translator;
 
-class StudentCrudController extends AbstractCrudController
+class StudentCrudController extends AbstractCustomCrudController
 {
     public static function getEntityFqcn(): string
     {

@@ -3,14 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Formation;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
-class FormationCrudController extends AbstractCrudController
+class FormationCrudController extends AbstractCustomCrudController
 {
     public static function getEntityFqcn(): string
     {
