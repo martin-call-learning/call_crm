@@ -7,14 +7,14 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Formation>
+ * @extends CrudEntityRepository<Formation>
  *
  * @method Formation|null find($id, $lockMode = null, $lockVersion = null)
  * @method Formation|null findOneBy(array $criteria, array $orderBy = null)
  * @method Formation[]    findAll()
  * @method Formation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FormationRepository extends ServiceEntityRepository
+class FormationRepository extends CrudEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

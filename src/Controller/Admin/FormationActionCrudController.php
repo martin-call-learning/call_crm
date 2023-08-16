@@ -2,12 +2,16 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Formation;
 use App\Entity\FormationAction;
+use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use Symfony\Component\Translation\Translator;
 
 class FormationActionCrudController extends AbstractCrudEntityController
@@ -22,7 +26,11 @@ class FormationActionCrudController extends AbstractCrudEntityController
     {
         $translator = new Translator('fr_FR');
         return array_merge((array) parent::configureFields($pageName),[
-            DateTimeField::new('duration', $translator->trans('formation_action.duration')),
+            AssociationField::new('formation', $translator->trans('formation_action.formation'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Formation::class)
+                    ->findNotDeleted()
+            )->autocomplete(),
+            DateTimeField::new('duration', $translator->trans('formation_action.duration')), // Todo : Create dateIntervalField
             IntegerField::new('expected_student_count', $translator->trans('formation_action.expected_student_count')),
             MoneyField::new('price', $translator->trans('formation_action.price'))->setCurrency('EUR'),
             BooleanField::new('remote', $translator->trans('formation_action.remote')),

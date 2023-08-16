@@ -3,9 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Contact;
+use App\Entity\Organisation;
+use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
@@ -29,7 +30,10 @@ class ContactCrudController extends AbstractCrudEntityController
             TextField::new('email', $translator->trans('contact.email')),
             TelephoneField::new('phoneNumber', $translator->trans('contact.phone')),
             TextField::new('address', $translator->trans('contact.address')),
-            ChoiceField::new('organisation', $translator->trans('contact.organisation'))
+            AssociationField::new('organisation', $translator->trans('contact.organisation'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Organisation::class)
+                    ->findNotDeleted()
+            )->autocomplete()
         ]);
     }
 }

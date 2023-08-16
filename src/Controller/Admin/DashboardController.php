@@ -7,9 +7,12 @@ use App\Entity\Formation;
 use App\Entity\FormationAction;
 use App\Entity\Funder;
 use App\Entity\FundingType;
+use App\Entity\Grade;
 use App\Entity\Organisation;
 use App\Entity\Session;
+use App\Entity\Skill;
 use App\Entity\Student;
+use App\Entity\Test;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -24,6 +27,65 @@ class DashboardController extends AbstractDashboardController
 {
     public function __construct(private AdminUrlGenerator $adminUrlGenerator) {
     }
+
+    public function configureDashboard(): Dashboard
+    {
+        return Dashboard::new()
+            // the name visible to end users
+            ->setTitle('CALL CRM')
+
+            // by default EasyAdmin displays a black square as its default favicon;
+            // use this method to display a custom favicon: the given path is passed
+            // "as is" to the Twig asset() function:
+            // <link rel="shortcut icon" href="{{ asset('...') }}">
+            //->setFaviconPath('favicon.svg')
+
+            // the domain used by default is 'messages'
+            //->setTranslationDomain('my-custom-domain')
+
+            // there's no need to define the "text direction" explicitly because
+            // its default value is inferred dynamically from the user locale
+            //->setTextDirection('ltr')
+
+            // set this option if you prefer the page content to span the entire
+            // browser width, instead of the default design which sets a max width
+            ->renderContentMaximized()
+
+            // set this option if you prefer the sidebar (which contains the main menu)
+            // to be displayed as a narrow column instead of the default expanded design
+            //->renderSidebarMinimized()
+
+            // by default, users can select between a "light" and "dark" mode for the
+            // backend interface. Call this method if you prefer to disable the "dark"
+            // mode for any reason (e.g. if your interface customizations are not ready for it)
+            //->disableDarkMode()
+
+            // by default, all backend URLs are generated as absolute URLs. If you
+            // need to generate relative URLs instead, call this method
+            //->generateRelativeUrls()
+
+            // set this option if you want to enable locale switching in dashboard.
+            // IMPORTANT: this feature won't work unless you add the {_locale}
+            // parameter in the admin dashboard URL (e.g. '/admin/{_locale}').
+            // the name of each locale will be rendered in that locale
+            // (in the following example you'll see: "English", "Polski")
+            // ->setLocales(['en', 'fr'])
+            // to customize the labels of locales, pass a key => value array
+            // (e.g. to display flags; although it's not a recommended practice,
+            // because many languages/locales are not associated to a single country)
+            ->setLocales([
+                'en' => '🇬🇧 English',
+                'fr' => '🇫🇷 French'
+            ])
+            // to further customize the locale option, pass an instance of
+            // EasyCorp\Bundle\EasyAdminBundle\Config\Locale
+            //->setLocales([
+            //    'en', // locale without custom options
+            //   Locale::new('pl', 'polski', 'far fa-language') // custom label and icon
+            //])
+        ;
+    }
+
 
     #[Route('/admin', name: 'admin')]
     public function index(): Response
@@ -48,15 +110,11 @@ class DashboardController extends AbstractDashboardController
         // return $this->render('some/path/my-dashboard.html.twig');
     }
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setTitle('Cshow Crm');
-    }
-
     public function configureMenuItems(): iterable
     {
         $translator = new Translator('fr_FR');
+
+        // #### Formations ####
 
         yield MenuItem::linkToDashboard($translator->trans('dashboard.link.dashboard'), 'fa fa-home');
 
@@ -88,17 +146,24 @@ class DashboardController extends AbstractDashboardController
         ]);
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.skill"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.show.skill"), "fas fa-eye", Student::class),
-            MenuItem::linkToCrud($translator->trans("dashboard.add.skill"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
+            MenuItem::linkToCrud($translator->trans("dashboard.show.skill"), "fas fa-eye", Skill::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.skill"), "fas fa-plus", Skill::class)->setAction(Crud::PAGE_NEW)
         ]);
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.test"), 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud($translator->trans("dashboard.show.test"), "fas fa-eye", Student::class),
-            MenuItem::linkToCrud($translator->trans("dashboard.add.test"), "fas fa-plus", Student::class)->setAction(Crud::PAGE_NEW)
+            MenuItem::linkToCrud($translator->trans("dashboard.show.test"), "fas fa-eye", Test::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.test"), "fas fa-plus", Test::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
+        yield MenuItem::subMenu($translator->trans("dashboard.link.grade"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.grade"), "fas fa-eye", Grade::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.grade"), "fas fa-plus", Grade::class)->setAction(Crud::PAGE_NEW)
         ]);
 
 
-        yield MenuItem::section($translator->trans('section.customers'));
+        // #### Customers ####
+
+        yield MenuItem::section($translator->trans('sections.customers'));
 
         yield MenuItem::subMenu($translator->trans("dashboard.link.contact"), 'fas fa-list')->setSubItems([
             MenuItem::linkToCrud($translator->trans("dashboard.show.contact"), "fas fa-eye", Contact::class),

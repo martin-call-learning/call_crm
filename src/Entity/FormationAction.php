@@ -126,4 +126,10 @@ class FormationAction
 
         return $this;
     }
+
+
+    public function __toString(): string {
+        return $this->getFormation()->__toString() . ' : ' . $this->getPrice() . '€ * '.$this->getExpectedStudentCount().'\n'
+            . 'remote : '. $this->isRemote(). 'presential : ' . $this->isPresential(). 'lvl : '.$this->getLevelRequired();
+    }
 }

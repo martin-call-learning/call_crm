@@ -11,6 +11,7 @@ dashboard:
     fundingType: Funding types
     skill: Skills
     test: Tests
+    grade: Grades
 
   show:
     formation: Show formations
@@ -23,6 +24,7 @@ dashboard:
     fundingType: Show funding types
     skill: Show skills
     test: Show tests
+    grade: Show grades
 
   add:
     formation: Add formation
@@ -35,6 +37,7 @@ dashboard:
     fundingType: Add a funding type
     skill: Add a skill
     test: Add a test
+    grade: Add grade
 
 sections:
   formations: Formations
@@ -110,3 +113,7 @@ test:
   student: Test's student
   score: Test
 
+grade:
+  test: Test
+  student: Student
+  score: Grade

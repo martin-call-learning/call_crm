@@ -11,6 +11,7 @@ dashboard:
     fundingType: Types de financement
     skill: Compétences
     test: Evaluations
+    grade: Notes
 
   show:
     formation: Afficher les cours
@@ -23,6 +24,7 @@ dashboard:
     fundingType: Afficher les types de financement
     skill: Afficher les compétences
     test: Afficher les évaluations
+    grade: Afficher les notes
 
   add:
     formation: Ajouter un cours
@@ -35,6 +37,7 @@ dashboard:
     fundingType: Ajouter un type de financement
     skill: Ajouter une compétence
     test: Ajouter une évaluation
+    grade: Ajouter une note
 
 sections:
   formations: Formations
@@ -104,3 +107,12 @@ user:
 
 skill:
   name: Nom de la compétence
+
+test:
+  name: Nom du test
+  skill: Compétence évaluée
+
+grade:
+  test: Evaluation notée
+  student: Etudiant noté
+  score: Note

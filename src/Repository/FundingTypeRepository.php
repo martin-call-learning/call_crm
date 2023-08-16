@@ -7,14 +7,14 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<FundingType>
+ * @extends CrudEntityRepository<FundingType>
  *
  * @method FundingType|null find($id, $lockMode = null, $lockVersion = null)
  * @method FundingType|null findOneBy(array $criteria, array $orderBy = null)
  * @method FundingType[]    findAll()
  * @method FundingType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FundingTypeRepository extends ServiceEntityRepository
+class FundingTypeRepository extends CrudEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

@@ -2,7 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact;
+use App\Entity\Organisation;
 use App\Entity\Student;
+use App\Repository\ContactRepository;
+use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -17,11 +22,14 @@ class StudentCrudController extends AbstractCrudEntityController
 
     public function configureFields(string $pageName): iterable
     {
-        // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
+
         return array_merge((array) parent::configureFields($pageName), [
-            ChoiceField::new('contact', $translator->trans('student.contact'))
+            AssociationField::new('contact', $translator->trans('student.contact'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Contact::class)
+                    ->findNotDeleted()
+            )->autocomplete()
         ]);
     }
 }

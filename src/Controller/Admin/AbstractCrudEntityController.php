@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\CrudEntity;
+use App\Repository\ContactRepository;
+use App\Repository\OrganisationRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -13,6 +15,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
  * This implementation of AbstractCrudController automates the create, updated and deleted at attributes for every entity.
  */
 abstract class AbstractCrudEntityController extends AbstractCrudController {
+
+    public function __construct(
+        ContactRepository $contactRepository,
+        OrganisationRepository $organisationRepository
+    ) {
+        $this->contactRepository = $contactRepository;
+        $this->organisationRepository = $organisationRepository;
+    }
 
     /**
      * This methods sets the createdAt attribute for a CrudEntity when creating it.
@@ -36,7 +46,7 @@ abstract class AbstractCrudEntityController extends AbstractCrudController {
      * @return void
      */
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void {
-        if($entityInstance instanceof CrudEntity){
+        if(in_array(CrudEntity::class, class_uses($entityInstance::class), true)){
             $entityInstance->setUpdatedAt(new DateTimeImmutable());
 
             parent::updateEntity($entityManager, $entityInstance);
@@ -51,8 +61,8 @@ abstract class AbstractCrudEntityController extends AbstractCrudController {
      * @return void
      */
     public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void {
-        if($entityInstance instanceof CrudEntity){
-            $entityInstance->setDeletedAt(new DateTimeImmutable());
+        if(in_array(CrudEntity::class, class_uses($entityInstance::class), true)){
+                $entityInstance->setDeletedAt(new DateTimeImmutable());
             parent::updateEntity($entityManager, $entityInstance); // Todo: see if we can use the parent::deleteEntity method instead.
         }
     }

@@ -2,8 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\FormationAction;
+use App\Entity\Organisation;
 use App\Entity\Session;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -25,7 +29,10 @@ class SessionCrudController extends AbstractCrudEntityController
 
         return array_merge((array) parent::configureFields($pageName), [
             ArrayField::new("students", $translator->trans('session.students')),
-            ChoiceField::new('formationAction', $translator->trans('session.formation_action')),
+            AssociationField::new('formationAction', $translator->trans('session.formation_action'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(FormationAction::class)
+                    ->findNotDeleted()
+            )->autocomplete(),
             DateField::new('startDate', $translator->trans('session.start_date')),
             DateField::new('endDate', $translator->trans('session.end_date')),
             // Todo : ChoiceField::new('funder') Has the funder to be in this CRUD Controller ??

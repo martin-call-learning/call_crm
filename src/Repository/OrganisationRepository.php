@@ -7,14 +7,14 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Organisation>
+ * @extends CrudEntityRepository<Organisation>
  *
  * @method Organisation|null find($id, $lockMode = null, $lockVersion = null)
  * @method Organisation|null findOneBy(array $criteria, array $orderBy = null)
  * @method Organisation[]    findAll()
  * @method Organisation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class OrganisationRepository extends ServiceEntityRepository
+class OrganisationRepository extends CrudEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -39,7 +39,7 @@ class OrganisationRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
+    //    /**
 //     * @return Organisation[] Returns an array of Organisation objects
 //     */
 //    public function findByExampleField($value): array
