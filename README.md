@@ -1,5 +1,7 @@
 # CALL CRM
 
+[![PHPUnit Tests](https://github.com/martin-call-learning/call_crm/workflows/PHPUnit%20Tests/badge.svg)](https://github.com/martin-call-learning/call_crm/actions/workflows/phpunit.yml)
+
 ## Set up the database
 ```bash 
 php bin/console doctrine:database:drop --force
