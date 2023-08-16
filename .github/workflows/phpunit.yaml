@@ -12,10 +12,12 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
 
       - name: Install dependencies
-        run: composer install --optimize-autoloader --no-progress --no-interaction
+        run:
+          composer update
+          composer install --optimize-autoloader --no-progress --no-interaction
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit
