@@ -3,9 +3,18 @@
 ## Set up the database
 ```bash 
 php bin/console doctrine:database:drop --force
-```
-```bash
+
 php bin/console doctrine:schema:create
+```
+## Set up the test database
+```bash
+# Create the test database.
+php bin/console --env=test doctrine:database:create
+
+# Create the tables/columns in the test database
+php bin/console --env=test doctrine:schema:create
+
+composer require --dev dama/doctrine-test-bundle
 ```
 
 ## Connect to database

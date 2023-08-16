@@ -12,6 +12,7 @@ dashboard:
     skill: Compétences
     test: Evaluations
     grade: Notes
+    user: Utilisateurs
 
   show:
     formation: Afficher les cours
@@ -25,6 +26,7 @@ dashboard:
     skill: Afficher les compétences
     test: Afficher les évaluations
     grade: Afficher les notes
+    user: Afficher les utilisateurs
 
   add:
     formation: Ajouter un cours
@@ -38,6 +40,7 @@ dashboard:
     skill: Ajouter une compétence
     test: Ajouter une évaluation
     grade: Ajouter une note
+    user: Ajouter un utilisateur
 
 sections:
   formations: Formations

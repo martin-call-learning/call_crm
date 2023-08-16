@@ -16,6 +16,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
  */
 abstract class AbstractCrudEntityController extends AbstractCrudController {
 
+    // Todo : add a setting removing every deleted item 6 months or more old.
+
     public function __construct(
         ContactRepository $contactRepository,
         OrganisationRepository $organisationRepository

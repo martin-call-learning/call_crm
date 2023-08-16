@@ -7,9 +7,10 @@ use Doctrine\ORM\Exception\NotSupported;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use App\Entity\Formation;
+use App\Entity\FundingType;
 
 class CrudEntityRepositoryTest extends KernelTestCase {
+
     /**
     * @var EntityManager
     */
@@ -32,22 +33,32 @@ class CrudEntityRepositoryTest extends KernelTestCase {
      * @throws NotSupported
      */
     public function testFindNotDeleted() {
-        // Test with a deleted entity, replace with your actual entity fields
-        $entity = (new Formation())->setDeletedAt(new DateTimeImmutable());
+
+        // Adding a deleted entity.
+        $entity = (new FundingType())
+            ->setCreatedAt(new DateTimeImmutable())
+            ->setDeletedAt(new DateTimeImmutable())
+            ->setName("Funding Type deleted");
+
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
 
-        // Test with a not deleted entity
-        $entity = (new Formation())->setDeletedAt(null);
+        // Adding a not deleted entity.
+        $entity = (new FundingType())
+            ->setCreatedAt(new DateTimeImmutable())
+            ->setName("Funding Type not deleted");
+
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
 
-        $entities = $this->entityManager
-            ->getRepository(Formation::class)
+        // Using the tested method.
+        $undeletedEntities = $this->entityManager
+            ->getRepository(FundingType::class)
             ->findNotDeleted();
 
-        $this->assertCount(1, $entities);
-        $this->assertNull($entities[0]->getDeletedAt());
+        // Asserts.
+        $this->assertCount(1, $undeletedEntities, "The 'CrudEntityRepository::findNotDeleted' function returns too much values");
+        $this->assertNull($undeletedEntities[0]->getDeletedAt());
     }
 
     protected function tearDown(): void {

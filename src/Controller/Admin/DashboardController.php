@@ -165,6 +165,11 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section($translator->trans('sections.customers'));
 
+        yield MenuItem::subMenu($translator->trans("dashboard.link.user"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.user"), "fas fa-eye", User::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.user"), "fas fa-plus", User::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
         yield MenuItem::subMenu($translator->trans("dashboard.link.contact"), 'fas fa-list')->setSubItems([
             MenuItem::linkToCrud($translator->trans("dashboard.show.contact"), "fas fa-eye", Contact::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.contact"), "fas fa-plus", Contact::class)->setAction(Crud::PAGE_NEW)

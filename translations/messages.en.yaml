@@ -12,6 +12,7 @@ dashboard:
     skill: Skills
     test: Tests
     grade: Grades
+    user: Users
 
   show:
     formation: Show formations
@@ -25,6 +26,7 @@ dashboard:
     skill: Show skills
     test: Show tests
     grade: Show grades
+    user: Show users
 
   add:
     formation: Add formation
@@ -38,6 +40,7 @@ dashboard:
     skill: Add a skill
     test: Add a test
     grade: Add grade
+    user: Add an user
 
 sections:
   formations: Formations
