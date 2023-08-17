@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\FormationActionRepository;
+use DateInterval;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FormationActionRepository::class)]
@@ -16,12 +17,12 @@ class FormationAction
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Formation $formation = null;
 
     #[ORM\Column]
-    private ?\DateInterval $duration = null;
+    private ?DateInterval $duration = null;
 
     #[ORM\Column]
     private ?float $price = null;
@@ -55,12 +56,12 @@ class FormationAction
         return $this;
     }
 
-    public function getDuration(): ?\DateInterval
+    public function getDuration(): ?DateInterval
     {
         return $this->duration;
     }
 
-    public function setDuration(\DateInterval $duration): self
+    public function setDuration(DateInterval $duration): self
     {
         $this->duration = $duration;
 

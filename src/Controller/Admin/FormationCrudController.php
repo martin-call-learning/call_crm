@@ -28,6 +28,6 @@ class FormationCrudController extends AbstractCrudEntityController
             TextEditorField::new('content', $translator->trans('formation.content')),
             TextEditorField::new('highlights', $translator->trans('formation.highlights')),
             TextEditorField::new('expectedResults', $translator->trans('formation.expectedResults'))
-            ]);
+        ]);
     }
 }

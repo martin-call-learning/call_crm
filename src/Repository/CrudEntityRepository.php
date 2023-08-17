@@ -18,7 +18,7 @@ abstract class CrudEntityRepository extends ServiceEntityRepository {
     public function findNotDeleted(): array
     {
         return $this->createQueryBuilder('table')
-            ->andWhere('table.deletedAt is null')
+            ->andWhere('table.deletedAt IS NULL')
             ->getQuery()
             ->execute()
             ;

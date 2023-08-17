@@ -33,5 +33,6 @@ npm run dev
 
 ## Bugs & Todos
 
-1. Todo : Add the possibility to enter the name of the formation to get formation id when creating or modifying formation action.
-2. Todo : Find a way to make the symfony console work with ```make:registration-form``` command in order to develop registration system
+1. Todo : Find a way to make the symfony console work with ```make:registration-form``` command in order to develop registration system
+2. Bug : The findNotDeleted method returns good values but it's not working with forms 
+    > Check ```src/Controller/Admin/AbstractCrudEntityController::createIndexQueryBuilder``` and the association fields in configureFields method in FunderController, FormationAction, etc...)

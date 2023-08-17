@@ -39,6 +39,14 @@ class FormationActionRepository extends CrudEntityRepository
         }
     }
 
+    public function findAllGroupedByFormation(): array {
+        return $this->createQueryBuilder('fa')
+            ->andWhere('fa.deletedAt IS NULL')
+            ->groupBy('fa.formation')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return FormationAction[] Returns an array of FormationAction objects
 //     */

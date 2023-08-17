@@ -35,7 +35,7 @@ class SessionCrudController extends AbstractCrudEntityController
             )->autocomplete(),
             DateField::new('startDate', $translator->trans('session.start_date')),
             DateField::new('endDate', $translator->trans('session.end_date')),
-            // Todo : ChoiceField::new('funder') Has the funder to be in this CRUD Controller ??
+            // Todo : Has the funder to be in this CRUD Controller ??
         ]);
     }
 }

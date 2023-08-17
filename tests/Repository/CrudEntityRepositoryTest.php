@@ -9,23 +9,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use App\Entity\FundingType;
 
-class CrudEntityRepositoryTest extends KernelTestCase {
-
-    /**
-    * @var EntityManager
-    */
-    private EntityManager $entityManager;
-
-    /**
-    * {@inheritDoc}
-    */
-    protected function setUp(): void {
-        $kernel = self::bootKernel();
-
-        $this->entityManager = $kernel->getContainer()
-        ->get('doctrine')
-        ->getManager();
-    }
+class CrudEntityRepositoryTest extends AbstractRepositoryTestClass {
 
     /**
      * @throws OptimisticLockException
@@ -61,11 +45,4 @@ class CrudEntityRepositoryTest extends KernelTestCase {
         $this->assertNull($undeletedEntities[0]->getDeletedAt());
     }
 
-    protected function tearDown(): void {
-        parent::tearDown();
-
-        // doing this is recommended to avoid memory leaks
-        $this->entityManager->close();
-        unset($this->entityManager);
-    }
 }
