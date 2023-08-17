@@ -36,3 +36,5 @@ npm run dev
 1. Todo : Find a way to make the symfony console work with ```make:registration-form``` command in order to develop registration system
 2. Bug : The findNotDeleted method returns good values but it's not working with forms 
     > Check ```src/Controller/Admin/AbstractCrudEntityController::createIndexQueryBuilder``` and the association fields in configureFields method in FunderController, FormationAction, etc...)
+3. Créer champs personnalisés DateIntervalField et ListEntityField
+4. Trouver la cause du problème des redirections
