@@ -1,0 +1,12 @@
+{% block easyadmin_field_time_interval_edit %}
+    {% set name = 'dateInterval' %}
+    <div class="time-interval-field d-flex">
+        <label for="daysId"></label><input type="number" id="days" name="{{ name }}[days]" value="{{ field.value.days }}" placeholder="Days">
+        <label for="hoursId"></label><input type="number" id="hours" name="{{ name }}[hours]" value="{{ field.value.h }}" placeholder="Hours">
+        <label for="minutes"></label><input type="number" id="minutes" name="{{ name }}[minutes]" value="{{ field.value.i }}" placeholder="Minutes">
+    </div>
+
+    <script>
+        // JavaScript to handle input validation or interactions
+    </script>
+{% endblock %}

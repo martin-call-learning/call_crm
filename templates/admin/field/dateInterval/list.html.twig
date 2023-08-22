@@ -1,0 +1,7 @@
+{% block easyadmin_field_time_interval %}
+    {% if field.value %}
+        {{ field.value.d }} days, {{ field.value.m }} months, {{ field.value.y }} years
+    {% else %}
+        N/A
+    {% endif %}
+{% endblock %}

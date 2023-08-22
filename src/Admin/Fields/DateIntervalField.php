@@ -17,7 +17,7 @@ class DateIntervalField implements FieldInterface {
             ->setLabel($label)
 
             // this template is used in 'index' and 'detail' pages
-            ->setTemplatePath('admin/field/dateInterval.html.twig')
+            ->setTemplatePath('admin/field/dateInterval/list.html.twig')
 
             // this is used in 'edit' and 'new' pages to edit the field contents
             // you can use your own form types too
@@ -26,7 +26,7 @@ class DateIntervalField implements FieldInterface {
 
             // these methods allow to define the web assets loaded when the
             // field is displayed in any CRUD page (index/detail/edit/new)
-            ->addCssFiles('public/css/field-dateInterval.css')
+            //->addCssFiles('public/css/field-dateInterval.css')
             //->addJsFiles('js/admin/field-dateInterval.js')
             ;
     }

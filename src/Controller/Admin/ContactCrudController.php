@@ -7,6 +7,7 @@ use App\Entity\Organisation;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
@@ -27,7 +28,7 @@ class ContactCrudController extends AbstractCrudEntityController
         return array_merge((array) parent::configureFields($pageName),[
             TextField::new('firstname', $translator->trans('contact.firstname')),
             TextField::new('lastname', $translator->trans('contact.lastname')),
-            TextField::new('email', $translator->trans('contact.email')),
+            EmailField::new('email', $translator->trans('contact.email')),
             TelephoneField::new('phoneNumber', $translator->trans('contact.phone')),
             TextField::new('address', $translator->trans('contact.address')),
             AssociationField::new('organisation', $translator->trans('contact.organisation'))->setQueryBuilder(
