@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\FormationAction;
 use App\Entity\Organisation;
 use App\Entity\Session;
+use App\Entity\Student;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -28,7 +29,9 @@ class SessionCrudController extends AbstractCrudEntityController
         $translator = new Translator('fr_FR');
 
         return array_merge([
-            CollectionField::new("students", $translator->trans('session.students')),
+            CollectionField::new("students", $translator->trans('session.students'))
+                ->setEntryIsComplex(true)
+                ->useEntryCrudForm(StudentCrudController::class),
             AssociationField::new('formationAction', $translator->trans('session.formation_action'))->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(FormationAction::class)
                     ->findNotDeleted()
