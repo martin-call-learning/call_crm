@@ -55,32 +55,32 @@ contact:
   firstname: Prénom
   lastname: Nom de famille
   email: Email
-  phone: Numéro de téléphone du contact
-  address: Adresse du contact
-  organisation: Organisation du contact
+  phone: Numéro de téléphone
+  address: Adresse
+  organisation: Organisation
 
 formation:
-  id: ID de la formation
-  name: Nom de la formation
-  code: Code de la formation
-  globalGoal: Objectif général de la formation
-  pedaGoal: Objectif pédagogique de la formation
-  content: Contenu de la formation
-  highlights: Points importants de la formation
-  expectedResults: Résultats attendus à la fin de la formation
+  id: ID
+  name: Nom
+  code: Code
+  globalGoal: Objectif général
+  pedaGoal: Objectif pédagogique
+  content: Contenu
+  highlights: Points importants
+  expectedResults: Résultats attendus
 
 
 formation_action:
-  id: ID de l'action de formation
-  duration: Durée de l'action de formation
-  expected_student_count: Combien d'étudiants sont attendus dans cette action de formation ?
-  price: Coût de cette action de formation ?
-  remote: L'action de formation se déroule-t-elle en distanciel ?
-  presential: L'action de formation se déroule-t-elle en présentiel ?
-  level_required: Quel est le niveau requis pour cette action de formation ?
+  id: ID
+  duration: Durée
+  expected_student_count: Nombres'étudiants attendus
+  price: Coût
+  remote: Distanciel
+  presential: Présentiel
+  level_required: Niveau requis
 
 funder:
-  id: ID du financeur
+  id: ID
   organisation: Organisation du financeur
   name: Nom du financeur
   type: Type de financeur
@@ -93,12 +93,12 @@ organisation:
   name: Nom de l'organisation
 
 session:
-  id: ID de la session
-  student: Étudiant affecté à cette session
-  formation_action: Action de formation liée à cette session
-  start_date: Date de début de cette session ?
-  end_date: Date de fin de cette session ?
-  funder: Quel financeur finance cette session ?
+  id: ID
+  student: Étudiants
+  formation_action: Action de formation
+  start_date: Date de début
+  end_date: Date de fin
+  funder: Financeur
 
 student:
   id: ID de l'étudiant

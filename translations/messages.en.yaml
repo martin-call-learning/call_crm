@@ -67,16 +67,17 @@ formation:
   pedaGoal: Formation's pedagogical goal
   content: Formation's content
   highlights: Formation's highlights
-  expectedResults: The results expected at the end of the formation
+  expectedResults: Expected results
 
 formation_action:
-  id: Formation action's ID
-  duration: Formation action's duration
-  expected_student_count: How many students expected in this formation action ?
-  price: How much this action formation costs ?
-  remote: Is the formation action remote ?
-  presential: Is the formation action presential ?
-  level_required: What is the level required of this formation action ?
+  id: Id
+  duration: Duration
+  expected_student_count: Expected student count
+  price: Price
+  remote: Remote
+  presential: Presential
+  level_required: Level required
+  formation: Formation
 
 funder:
   id: Funder's id
@@ -93,11 +94,11 @@ organisation:
 
 session:
   id: Session's ID
-  student: Student affected to this session
-  formation_action: Formation action attached to this session
-  start_date: When does this session start ?
-  end_date: When does this session end ?
-  funder: Wich funder funds this session ?
+  student: Students
+  formation_action: Formation action
+  start_date: Start date
+  end_date: End date
+  funder: Funder
 
 student:
   id: Student's ID
