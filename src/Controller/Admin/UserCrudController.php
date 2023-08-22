@@ -2,7 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact;
+use App\Entity\Role;
 use App\Entity\User;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -22,14 +25,19 @@ class UserCrudController extends AbstractCrudEntityController
 
     public function configureFields(string $pageName): iterable
     {
-        // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
         return array_merge((array) parent::configureFields($pageName), [
             TextField::new('username', $translator->trans('user.username')),
             TextField::new('password', $translator->trans('user.password'))->setFormType(PasswordType::class),
-            AssociationField::new('roles', $translator->trans('user.role'))->autocomplete(),
-            ChoiceField::new('contact', $translator->trans('user.contact'))->autocomplete()
+            AssociationField::new('roles', $translator->trans('user.role'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Role::class)
+                    ->findNotDeleted()
+            )->autocomplete(),
+            AssociationField::new('contact', $translator->trans('user.contact'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Contact::class)
+                    ->findNotDeleted()
+            )->autocomplete()
         ]);
     }
 }

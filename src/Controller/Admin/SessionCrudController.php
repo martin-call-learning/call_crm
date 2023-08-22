@@ -24,7 +24,6 @@ class SessionCrudController extends AbstractCrudEntityController
 
     public function configureFields(string $pageName): iterable
     {
-        // Todo : put real fields.
         $translator = new Translator('fr_FR');
 
         return array_merge((array) parent::configureFields($pageName), [

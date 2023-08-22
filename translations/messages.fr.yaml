@@ -122,3 +122,6 @@ grade:
   test: Evaluation notée
   student: Etudiant noté
   score: Note
+
+role:
+  name: Nom du rôle

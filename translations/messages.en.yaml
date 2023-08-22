@@ -123,3 +123,6 @@ grade:
   test: Test
   student: Student
   score: Grade
+
+role:
+  name: Role's name
