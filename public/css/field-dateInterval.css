@@ -1,0 +1,9 @@
+.time-interval-field {
+    display: flex;
+    align-items: center;
+}
+
+.time-interval-field input {
+    width: 50px; /* Adjust width as needed */
+    margin: 0 5px;
+}

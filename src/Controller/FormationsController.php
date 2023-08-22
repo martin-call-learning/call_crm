@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FormationsController extends AbstractController
 {
     #[Route('/formations', name: 'app_formations')]
-    public function index(FormationRepository $formationRepository, FormationActionRepository $formationActionRepository): Response
+    public function formations(FormationRepository $formationRepository, FormationActionRepository $formationActionRepository): Response
     {
         return $this->render('admin-dashboard/formations.html.twig', [
             'controller_name' => 'FormationsController',

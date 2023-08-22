@@ -13,6 +13,7 @@ dashboard:
     test: Tests
     grade: Grades
     user: Users
+    role: Roles
 
   show:
     formation: Show formations
@@ -27,6 +28,7 @@ dashboard:
     test: Show tests
     grade: Show grades
     user: Show users
+    role: Show roles
 
   add:
     formation: Add formation
@@ -41,6 +43,7 @@ dashboard:
     test: Add a test
     grade: Add grade
     user: Add an user
+    role: Add a role
 
 sections:
   formations: Formations
@@ -104,7 +107,7 @@ user:
   id: User's ID
   username: Username
   password: Password
-  role: User's role
+  role: User's roles
   contact: User's contact
 
 skill:

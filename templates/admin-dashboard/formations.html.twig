@@ -12,13 +12,7 @@
     <h1 class="my-5">Formations</h1>
     <ul id="formation-list">
         {% for formation in formations %}
-            {% set actions = [] %}
-            {% for item in items %}
-                {% if item.formation is formation %}
-                    {% set actions = actions|merge([item]) %}
-                {% endif %}
-            {% endfor %}
-            {% include "components/formationItem.html.twig" with {formation, actions} %}
+            {% include "components/formationItem.html.twig" with {formation} %}
         {% endfor %}
     </ul>
 

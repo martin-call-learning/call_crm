@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -27,7 +28,7 @@ class UserCrudController extends AbstractCrudEntityController
         return array_merge((array) parent::configureFields($pageName), [
             TextField::new('username', $translator->trans('user.username')),
             TextField::new('password', $translator->trans('user.password'))->setFormType(PasswordType::class),
-            ChoiceField::new('role', $translator->trans('user.role'))->autocomplete(),
+            AssociationField::new('roles', $translator->trans('user.role'))->autocomplete(),
             ChoiceField::new('contact', $translator->trans('user.contact'))->autocomplete()
         ]);
     }

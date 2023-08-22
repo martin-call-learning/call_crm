@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+class User implements UserInterface
 {
 
     use CrudEntity;
@@ -24,16 +27,17 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column]
-    private ?int $role = null;
-
     #[ORM\ManyToOne]
     private ?Contact $contact = null;
 
-    public function getId(): ?int
+    #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'users')]
+    private Collection $roles;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->roles = new ArrayCollection();
     }
+
 
     public function getUsername(): ?string
     {
@@ -59,18 +63,6 @@ class User
         return $this;
     }
 
-    public function getRole(): ?int
-    {
-        return $this->role;
-    }
-
-    public function setRole(int $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
     public function getContact(): ?Contact
     {
         return $this->contact;
@@ -81,5 +73,37 @@ class User
         $this->contact = $contact;
 
         return $this;
+    }
+
+    /**
+     * @return array<Role>
+     */
+    public function getRoles(): array
+    {
+        return $this->roles->toArray();
+    }
+
+    public function addRole(Role $role): self
+    {
+        if (!$this->roles->contains($role)) {
+            $this->roles->add($role);
+        }
+
+        return $this;
+    }
+
+    public function removeRole(Role $role): self
+    {
+        $this->roles->removeElement($role);
+
+        return $this;
+    }
+
+    public function eraseCredentials() {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUserIdentifier(): string {
+        return $this->username;
     }
 }

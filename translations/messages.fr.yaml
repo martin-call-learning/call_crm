@@ -13,6 +13,7 @@ dashboard:
     test: Evaluations
     grade: Notes
     user: Utilisateurs
+    role: Rôles
 
   show:
     formation: Afficher les cours
@@ -27,6 +28,7 @@ dashboard:
     test: Afficher les évaluations
     grade: Afficher les notes
     user: Afficher les utilisateurs
+    role: Afficher les rôles
 
   add:
     formation: Ajouter un cours
@@ -41,6 +43,7 @@ dashboard:
     test: Ajouter une évaluation
     grade: Ajouter une note
     user: Ajouter un utilisateur
+    role: Ajouter un rôle
 
 sections:
   formations: Formations
@@ -105,7 +108,7 @@ user:
   id: ID de l'utilisateur
   username: Nom d'utilisateur
   password: Mot de passe
-  role: Rôle de l'utilisateur
+  role: Rôles de l'utilisateur
   contact: Contact de l'utilisateur
 
 skill:

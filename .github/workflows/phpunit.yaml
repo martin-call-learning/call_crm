@@ -21,7 +21,6 @@ jobs:
 
       - name: Set up database
         run: |
-          touch var/data/data.db
           php bin/console doctrine:database:create
           php bin/console doctrine:schema:create
 

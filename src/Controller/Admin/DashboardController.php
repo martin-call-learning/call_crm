@@ -10,6 +10,7 @@ use App\Entity\Funder;
 use App\Entity\FundingType;
 use App\Entity\Grade;
 use App\Entity\Organisation;
+use App\Entity\Role;
 use App\Entity\Session;
 use App\Entity\Skill;
 use App\Entity\Student;
@@ -191,6 +192,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu($translator->trans("dashboard.link.fundingType"), 'fas fa-list')->setSubItems([
             MenuItem::linkToCrud($translator->trans("dashboard.show.fundingType"), "fas fa-eye", FundingType::class),
             MenuItem::linkToCrud($translator->trans("dashboard.add.fundingType"), "fas fa-plus", FundingType::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
+        yield MenuItem::subMenu($translator->trans("dashboard.link.role"), 'fas fa-list')->setSubItems([
+            MenuItem::linkToCrud($translator->trans("dashboard.show.role"), "fas fa-eye", Role::class),
+            MenuItem::linkToCrud($translator->trans("dashboard.add.role"), "fas fa-plus", Role::class)->setAction(Crud::PAGE_NEW)
         ]);
     }
 }

@@ -1,22 +1,17 @@
 <formation class="mb-5">
-    {% set formation_edit = path('admin_edit', { entity: 'Formation', id: formation.id }) %}
     <div class="row">
         <div class="col-md-7">
             <!-- Todo : Replace href by { formation_show } & add { set formation_show = path('formation_show') } -->
             <h4>
-                <a href="{{ formation_edit }}">{{ formation.name }}</a>
+                <a href="#">{{ formation.name }}</a>
             </h4>
-            <strong>{{ formation.code }}</strong>
-            <p>{{ formation.globalGoal }}</p>
-            <p>{{ formation.pedaGoal }}</p>
-            <p>{{ formation.content }}</p>
-            <p>{{ formation.highlights }}</p>
-            <p>{{ formation.expectedResults }}</p>
-            {% for action in actions %}
-                <div>
-                    <h4>{{ action.duration }} {{ action.price }} {{ action.expectedStudentCount }} {{ action.remote }} {{ action.prensential }} {{ action.levelRequired }}</h4>
-                </div>
-            {% endfor %}
+            <strong>{{ formation.code | raw }}</strong>
+            <p>{{ formation.globalGoal | raw }}</p>
+            <p>{{ formation.pedaGoal | raw }}</p>
+            <p>{{ formation.content  | raw}}</p>
+            <p>{{ formation.highlights | raw }}</p>
+            <p>{{ formation.expectedResults | raw }}</p>
+
         </div>
     </div>
 </formation>
