@@ -25,11 +25,11 @@ class StudentCrudController extends AbstractCrudEntityController
         $translator = new Translator('fr_FR');
 
 
-        return array_merge((array) parent::configureFields($pageName), [
+        return array_merge([
             AssociationField::new('contact', $translator->trans('student.contact'))->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Contact::class)
                     ->findNotDeleted()
             )->autocomplete()
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }

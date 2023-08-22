@@ -94,11 +94,12 @@ organisation:
 
 session:
   id: Session's ID
-  student: Students
+  students: Students
   formation_action: Formation action
   start_date: Start date
   end_date: End date
   funder: Funder
+
 
 student:
   id: Student's ID

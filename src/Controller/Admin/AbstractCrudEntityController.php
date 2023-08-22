@@ -3,17 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\CrudEntity;
-use App\Repository\ContactRepository;
-use App\Repository\OrganisationRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
-use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
-use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
@@ -23,16 +15,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 abstract class AbstractCrudEntityController extends AbstractCrudController {
 
     // Todo : add a setting removing every deleted item 6 months or more old.
-
-    public function __construct(
-        ContactRepository $contactRepository,
-        OrganisationRepository $organisationRepository,
-        EntityManagerInterface $entityManager
-    ) {
-        $this->contactRepository = $contactRepository;
-        $this->organisationRepository = $organisationRepository;
-        $this->entityManager = $entityManager;
-    }
 
     /**
      * This methods sets the createdAt attribute for a CrudEntity when creating it.

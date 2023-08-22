@@ -94,7 +94,7 @@ organisation:
 
 session:
   id: ID
-  student: Étudiants
+  students: Étudiants
   formation_action: Action de formation
   start_date: Date de début
   end_date: Date de fin

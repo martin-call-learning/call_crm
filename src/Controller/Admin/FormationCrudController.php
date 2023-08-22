@@ -20,7 +20,7 @@ class FormationCrudController extends AbstractCrudEntityController
     {
         $translator = new Translator('fr_FR');
 
-        return array_merge((array) parent::configureFields($pageName), [
+        return array_merge([
             TextField::new('name', $translator->trans('formation.name')),
             TextField::new('code', $translator->trans('formation.code')),
             TextEditorField::new('globalGoal', $translator->trans('formation.globalGoal')),
@@ -28,6 +28,6 @@ class FormationCrudController extends AbstractCrudEntityController
             TextEditorField::new('content', $translator->trans('formation.content')),
             TextEditorField::new('highlights', $translator->trans('formation.highlights')),
             TextEditorField::new('expectedResults', $translator->trans('formation.expectedResults'))
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }

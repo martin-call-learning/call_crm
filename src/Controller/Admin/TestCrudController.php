@@ -21,11 +21,11 @@ class TestCrudController extends AbstractCrudEntityController
     {
         $translator =  new Translator('fr_FR');
 
-        return array_merge((array) parent::configureFields($pageName),[
+        return array_merge([
             TextField::new('name', $translator->trans('test.name')),
             ChoiceField::new('skill', $translator->trans('test.skill')),
             ChoiceField::new('student', $translator->trans('test.student')),
             IntegerField::new('score', $translator->trans('test.score')),
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }

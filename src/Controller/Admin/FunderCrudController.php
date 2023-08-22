@@ -27,7 +27,7 @@ class FunderCrudController extends AbstractCrudEntityController
     {
         $translator = new Translator('fr_FR');
 
-        return array_merge((array) parent::configureFields($pageName),[
+        return array_merge([
             TextField::new('name', $translator->trans('funder.name')),
             AssociationField::new('organisation', $translator->trans('funder.organisation'))->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Organisation::class)
@@ -37,6 +37,6 @@ class FunderCrudController extends AbstractCrudEntityController
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(FundingType::class)
                     ->findNotDeleted()
             )->autocomplete()
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }

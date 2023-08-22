@@ -9,6 +9,7 @@ use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -26,8 +27,8 @@ class SessionCrudController extends AbstractCrudEntityController
     {
         $translator = new Translator('fr_FR');
 
-        return array_merge((array) parent::configureFields($pageName), [
-            ArrayField::new("students", $translator->trans('session.students')),
+        return array_merge([
+            CollectionField::new("students", $translator->trans('session.students')),
             AssociationField::new('formationAction', $translator->trans('session.formation_action'))->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(FormationAction::class)
                     ->findNotDeleted()
@@ -35,6 +36,6 @@ class SessionCrudController extends AbstractCrudEntityController
             DateField::new('startDate', $translator->trans('session.start_date')),
             DateField::new('endDate', $translator->trans('session.end_date')),
             // Todo : Has the funder to be in this CRUD Controller ??
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }

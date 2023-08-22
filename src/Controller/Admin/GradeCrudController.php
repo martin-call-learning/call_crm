@@ -18,10 +18,10 @@ class GradeCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         $translator = new Translator('fr_FR');
-        return [
+        return array_merge([
             ChoiceField::new('test', $translator->trans('grade.test')),
             ChoiceField::new('student', $translator->trans('grade.student')),
             IntegerField::new('score', $translator->trans('grade.score')),
-        ];
+        ], (array) parent::configureFields($pageName));
     }
 }

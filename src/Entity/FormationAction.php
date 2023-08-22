@@ -130,7 +130,7 @@ class FormationAction
 
 
     public function __toString(): string {
-        return $this->getFormation()->__toString() . ' : ' . $this->getPrice() . '€ * '.$this->getExpectedStudentCount().'\n'
-            . 'remote : '. $this->isRemote(). 'presential : ' . $this->isPresential(). 'lvl : '.$this->getLevelRequired();
+        return $this->getFormation()->__toString() . ' : ' . $this->getPrice()/100 . '€ * '.$this->getExpectedStudentCount(). ', '
+            . 'remote : '. $this->isRemote(). ', presential : ' . $this->isPresential(). ', lvl : '.$this->getLevelRequired();
     }
 }

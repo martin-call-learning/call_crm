@@ -23,7 +23,7 @@ class FormationActionCrudController extends AbstractCrudEntityController
     public function configureFields(string $pageName): iterable
     {
         $translator = new Translator('fr_FR');
-        return array_merge((array) parent::configureFields($pageName),[
+        return array_merge([
             AssociationField::new('formation', $translator->trans('formation_action.formation'))->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Formation::class)
                     ->findNotDeleted()
@@ -34,6 +34,6 @@ class FormationActionCrudController extends AbstractCrudEntityController
             BooleanField::new('remote', $translator->trans('formation_action.remote')),
             BooleanField::new('presential', $translator->trans('formation_action.presential')),
             IntegerField::new('level_required', $translator->trans('formation_action.level_required'))
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }

@@ -27,7 +27,7 @@ class UserCrudController extends AbstractCrudEntityController
     {
         $translator = new Translator('fr_FR');
 
-        return array_merge((array) parent::configureFields($pageName), [
+        return array_merge([
             TextField::new('username', $translator->trans('user.username')),
             TextField::new('password', $translator->trans('user.password'))->setFormType(PasswordType::class),
             AssociationField::new('roles', $translator->trans('user.role'))->setQueryBuilder(
@@ -38,6 +38,6 @@ class UserCrudController extends AbstractCrudEntityController
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Contact::class)
                     ->findNotDeleted()
             )->autocomplete()
-        ]);
+        ], (array) parent::configureFields($pageName));
     }
 }
