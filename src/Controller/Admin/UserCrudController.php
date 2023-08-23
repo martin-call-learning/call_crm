@@ -8,6 +8,7 @@ use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -30,10 +31,9 @@ class UserCrudController extends AbstractCrudEntityController
         return array_merge([
             TextField::new('username', $translator->trans('user.username')),
             TextField::new('password', $translator->trans('user.password'))->setFormType(PasswordType::class),
-            AssociationField::new('roles', $translator->trans('user.role'))->setQueryBuilder(
-                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Role::class)
-                    ->findNotDeleted()
-            )->autocomplete(),
+            CollectionField::new('roles', $translator->trans('user.roles'))
+                ->setEntryIsComplex(true)
+                ->useEntryCrudForm(RoleCrudController::class),
             AssociationField::new('contact', $translator->trans('user.contact'))->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Contact::class)
                     ->findNotDeleted()
