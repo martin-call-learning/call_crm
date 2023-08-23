@@ -109,7 +109,7 @@ user:
   id: User's ID
   username: Username
   password: Password
-  role: User's roles
+  roles: User's roles
   contact: User's contact
 
 skill:

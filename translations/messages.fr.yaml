@@ -108,7 +108,7 @@ user:
   id: ID de l'utilisateur
   username: Nom d'utilisateur
   password: Mot de passe
-  role: Rôles de l'utilisateur
+  roles: Rôles de l'utilisateur
   contact: Contact de l'utilisateur
 
 skill:

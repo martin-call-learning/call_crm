@@ -2,15 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Grade;
 use App\Entity\Skill;
 use App\Entity\Test;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
@@ -31,9 +27,10 @@ class TestCrudController extends AbstractCrudEntityController
                 fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Skill::class)
                     ->findNotDeleted()
             )->autocomplete(),
-            CollectionField::new('grades', $translator->trans('test.grades'))
-                ->setEntryIsComplex(true)
-                ->useEntryCrudForm(GradeCrudController::class),
+            AssociationField::new('grades', $translator->trans('test.grades'))->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder->getEntityManager()->getRepository(Grade::class)
+                    ->findNotDeleted()
+            )->autocomplete(),
         ], (array) parent::configureFields($pageName));
     }
 }

@@ -13,7 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use Symfony\Component\Translation\Translator;
 
-class GradeCrudController extends AbstractCrudController
+class GradeCrudController extends AbstractCrudEntityController
 {
     public static function getEntityFqcn(): string
     {
