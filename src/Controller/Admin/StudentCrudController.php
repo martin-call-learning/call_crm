@@ -15,11 +15,18 @@ use Symfony\Component\Translation\Translator;
 
 class StudentCrudController extends AbstractCrudEntityController
 {
+
+    /**
+     * @inheritDoc
+     */
     public static function getEntityFqcn(): string
     {
         return Student::class;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function configureFields(string $pageName): iterable
     {
         $translator = new Translator('fr_FR');

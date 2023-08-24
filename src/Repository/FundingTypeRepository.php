@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<FundingType>
+ * The FundingTypeRepository class provides access to the FundingType entity in the database.
+ *
+ * This repository handles database interactions for the FundingType entity, including finding, saving, and removing
+ * funding types from the database.
  *
  * @method FundingType|null find($id, $lockMode = null, $lockVersion = null)
  * @method FundingType|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FundingTypeRepository extends CrudEntityRepository
 {
+
+    /**
+     * FundingTypeRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, FundingType::class);
     }
 
+    /**
+     * Save a funding type entity to the database.
+     *
+     * @param FundingType $entity The funding type entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(FundingType $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class FundingTypeRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a funding type entity from the database.
+     *
+     * @param FundingType $entity The funding type entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(FundingType $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

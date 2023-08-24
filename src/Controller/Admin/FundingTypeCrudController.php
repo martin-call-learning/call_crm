@@ -10,11 +10,18 @@ use Symfony\Component\Translation\Translator;
 
 class FundingTypeCrudController extends AbstractCrudEntityController
 {
+
+    /**
+     * @inheritDoc
+     */
     public static function getEntityFqcn(): string
     {
         return FundingType::class;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function configureFields(string $pageName): iterable
     {
         $translator = new Translator('fr_FR');

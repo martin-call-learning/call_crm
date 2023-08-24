@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact;
 use App\Entity\CrudEntity;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -59,6 +60,12 @@ abstract class AbstractCrudEntityController extends AbstractCrudController {
         }
     }
 
+    /**
+     * Configure the fields displayed in the admin interface for the entity.
+     *
+     * @param string $pageName The current page name (list, edit, etc.).
+     * @return iterable An array of field configurations.
+     */
     public function configureFields(string $pageName): iterable {
         return [
             IdField::new('id')->hideOnForm(),
@@ -67,6 +74,13 @@ abstract class AbstractCrudEntityController extends AbstractCrudController {
             DateTimeField::new('deletedAt')->hideOnForm(),
         ];
     }
+
+    /**
+     * Get the fully qualified class name of the entity managed by this controller.
+     *
+     * @return string The entity's fully qualified class name.
+     */
+    public abstract static function getEntityFqcn(): string;
 
     /*
     public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields,

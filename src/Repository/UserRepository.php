@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<User>
+ * The UserRepository class provides access to the User entity in the database.
+ *
+ * This repository handles database interactions for the User entity, including finding, saving, and removing
+ * user records from the database.
  *
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
  * @method User|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UserRepository extends CrudEntityRepository
 {
+
+    /**
+     * UserRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
 
+    /**
+     * Save a user entity to the database.
+     *
+     * @param User $entity The user entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(User $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class UserRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a user entity from the database.
+     *
+     * @param User $entity The user entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(User $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Organisation>
+ * The OrganisationRepository class provides access to the Organisation entity in the database.
+ *
+ * This repository handles database interactions for the Organisation entity, including finding, saving, and removing
+ * organisations from the database.
  *
  * @method Organisation|null find($id, $lockMode = null, $lockVersion = null)
  * @method Organisation|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class OrganisationRepository extends CrudEntityRepository
 {
+
+    /**
+     * OrganisationRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Organisation::class);
     }
 
+    /**
+     * Save an organisation entity to the database.
+     *
+     * @param Organisation $entity The organisation entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Organisation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class OrganisationRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove an organisation entity from the database.
+     *
+     * @param Organisation $entity The organisation entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Organisation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

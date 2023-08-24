@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Student>
+ * The StudentRepository class provides access to the Student entity in the database.
+ *
+ * This repository handles database interactions for the Student entity, including finding, saving, and removing
+ * student records from the database.
  *
  * @method Student|null find($id, $lockMode = null, $lockVersion = null)
  * @method Student|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class StudentRepository extends CrudEntityRepository
 {
+
+    /**
+     * StudentRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Student::class);
     }
 
+    /**
+     * Save a student entity to the database.
+     *
+     * @param Student $entity The student entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Student $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class StudentRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a student entity from the database.
+     *
+     * @param Student $entity The student entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Student $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

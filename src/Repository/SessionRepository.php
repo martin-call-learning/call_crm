@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Session>
+ * The SessionRepository class provides access to the Session entity in the database.
+ *
+ * This repository handles database interactions for the Session entity, including finding, saving, and removing
+ * sessions from the database.
  *
  * @method Session|null find($id, $lockMode = null, $lockVersion = null)
  * @method Session|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class SessionRepository extends CrudEntityRepository
 {
+
+    /**
+     * SessionRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Session::class);
     }
 
+    /**
+     * Save a session entity to the database.
+     *
+     * @param Session $entity The session entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Session $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class SessionRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a session entity from the database.
+     *
+     * @param Session $entity The session entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Session $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

@@ -7,10 +7,20 @@ use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FieldTrait;
 
+/**
+ * A custom field type for displaying and editing DateInterval values.
+ */
 class DateIntervalField implements FieldInterface {
 
     use FieldTrait;
 
+    /**
+     * Create a new instance of the DateIntervalField.
+     *
+     * @param string $propertyName The name of the property the field is associated with.
+     * @param string|null $label The label to be displayed for the field.
+     * @return self A new instance of the DateIntervalField.
+     */
     public static function new(string $propertyName, ?string $label = null) {
         return (new self())
             ->setProperty($propertyName)
@@ -31,6 +41,11 @@ class DateIntervalField implements FieldInterface {
             ;
     }
 
+    /**
+     * Get a DTO (Data Transfer Object) representation of the field.
+     *
+     * @return FieldDto The DTO representing the field.
+     */
     public function getAsDto(): FieldDto {
         return $this->dto;
     }

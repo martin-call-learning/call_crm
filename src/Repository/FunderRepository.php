@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Funder>
+ * The FunderRepository class provides access to the Funder entity in the database.
+ *
+ * This repository handles database interactions for the Funder entity, including finding, saving, and removing
+ * funders from the database.
  *
  * @method Funder|null find($id, $lockMode = null, $lockVersion = null)
  * @method Funder|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FunderRepository extends CrudEntityRepository
 {
+
+    /**
+     * FunderRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Funder::class);
     }
 
+    /**
+     * Save a funder entity to the database.
+     *
+     * @param Funder $entity The funder entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Funder $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class FunderRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a funder entity from the database.
+     *
+     * @param Funder $entity The funder entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Funder $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

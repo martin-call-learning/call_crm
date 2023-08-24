@@ -1,17 +1,17 @@
-<formation class="mb-5">
+<formation class="mb-5 p-4">
     <div class="row">
-        <div class="col-md-7">
-            <!-- Todo : Replace href by { formation_show } & add { set formation_show = path('formation_show') } -->
-            <h4>
-                <a href="#">{{ formation.name }}</a>
+        <div class="col-md-7 formation-item">
+            <h4 class="mb-0">
+                <a href="#" class="text-primary text-decoration-none">{{ formation.name }}</a>
             </h4>
-            <strong>{{ formation.code | raw }}</strong>
-            <p>{{ formation.globalGoal | raw }}</p>
-            <p>{{ formation.pedaGoal | raw }}</p>
-            <p>{{ formation.content  | raw}}</p>
-            <p>{{ formation.highlights | raw }}</p>
-            <p>{{ formation.expectedResults | raw }}</p>
-
+            <strong class="my-0 text-secondary">{{ formation.code | raw }}</strong>
+            <div class="content pl-3 d-flex flex-column">
+                <p class="my-0">{{ formation.globalGoal | raw }}</p>
+                <p class="my-0">{{ formation.pedaGoal | raw }}</p>
+                <p class="my-0">{{ formation.content | raw }}</p>
+                <p class="my-0">{{ formation.highlights | raw }}</p>
+                <p class="my-0">{{ formation.expectedResults | raw }}</p>
+            </div>
         </div>
     </div>
 </formation>

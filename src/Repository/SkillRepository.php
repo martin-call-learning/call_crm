@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Skill>
+ * The SkillRepository class provides access to the Skill entity in the database.
+ *
+ * This repository handles database interactions for the Skill entity, including finding, saving, and removing
+ * skills from the database.
  *
  * @method Skill|null find($id, $lockMode = null, $lockVersion = null)
  * @method Skill|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class SkillRepository extends CrudEntityRepository
 {
+
+    /**
+     * SkillRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Skill::class);
     }
 
+    /**
+     * Save a skill entity to the database.
+     *
+     * @param Skill $entity The skill entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Skill $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class SkillRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a skill entity from the database.
+     *
+     * @param Skill $entity The skill entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Skill $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

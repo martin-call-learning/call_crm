@@ -12,14 +12,25 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use Symfony\Component\Translation\Translator;
 
+/**
+ * This class defines the controller responsible for managing FormationAction entities in the admin interface.
+ *
+ * @package App\Controller\Admin
+ */
 class FormationActionCrudController extends AbstractCrudEntityController
 {
+
+    /**
+     * @inheritDoc
+     */
     public static function getEntityFqcn(): string
     {
         return FormationAction::class;
     }
 
-
+    /**
+     * @inheritDoc
+     */
     public function configureFields(string $pageName): iterable
     {
         $translator = new Translator('fr_FR');

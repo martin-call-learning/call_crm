@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Role>
+ * The RoleRepository class provides access to the Role entity in the database.
+ *
+ * This repository handles database interactions for the Role entity, including finding, saving, and removing
+ * roles from the database.
  *
  * @method Role|null find($id, $lockMode = null, $lockVersion = null)
  * @method Role|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RoleRepository extends CrudEntityRepository
 {
+
+    /**
+     * RoleRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Role::class);
     }
 
+    /**
+     * Save a role entity to the database.
+     *
+     * @param Role $entity The role entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Role $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class RoleRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a role entity from the database.
+     *
+     * @param Role $entity The role entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Role $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

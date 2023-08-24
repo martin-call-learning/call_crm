@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Contact>
+ * The ContactRepository class provides access to the Contact entity in the database.
+ *
+ * This repository handles database interactions for the Contact entity, including finding, saving, and removing
+ * contacts from the database.
  *
  * @method Contact|null find($id, $lockMode = null, $lockVersion = null)
  * @method Contact|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ContactRepository extends CrudEntityRepository
 {
+
+    /**
+     * ContactRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Contact::class);
     }
 
+    /**
+     * Save a contact entity to the database.
+     *
+     * @param Contact $entity The contact entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Contact $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class ContactRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a contact entity from the database.
+     *
+     * @param Contact $entity The contact entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Contact $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

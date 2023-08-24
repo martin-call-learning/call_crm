@@ -8,10 +8,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * This class defines the controller responsible for handling the login page route.
+ *
+ * @package App\Controller
+ */
 class LoginController extends AbstractController {
+
+    /**
+     * Display the login page.
+     *
+     * @return Response The rendered HTML response.
+     *
+     * @Route('/login', name: 'app_login')
+     */
     #[Route('/login', name: 'app_login')]
     public function index(): Response
     {
+        // Render the login page template.
         return $this->render('login/index.html.twig', [
             'controller_name' => 'LoginController',
         ]);

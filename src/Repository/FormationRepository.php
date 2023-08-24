@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Formation>
+ * The FormationRepository class provides access to the Formation entity in the database.
+ *
+ * This repository handles database interactions for the Formation entity, including finding, saving, and removing
+ * formations from the database.
  *
  * @method Formation|null find($id, $lockMode = null, $lockVersion = null)
  * @method Formation|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FormationRepository extends CrudEntityRepository
 {
+
+    /**
+     * FormationRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Formation::class);
     }
 
+    /**
+     * Save a formation entity to the database.
+     *
+     * @param Formation $entity The formation entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Formation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class FormationRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a formation entity from the database.
+     *
+     * @param Formation $entity The formation entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Formation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

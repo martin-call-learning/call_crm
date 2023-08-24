@@ -11,15 +11,22 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Translation\Translator;
 
-
+/**
+ * CRUD controller for managing Contact entities.
+ */
 class ContactCrudController extends AbstractCrudEntityController
 {
+    /**
+     * @inheritDoc
+     */
     public static function getEntityFqcn(): string
     {
         return Contact::class;
     }
 
-
+    /**
+     * @inheritDoc
+     */
     public function configureFields(string $pageName): iterable
     {
         $translator = new Translator('fr_FR');

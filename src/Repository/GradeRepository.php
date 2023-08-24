@@ -7,7 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends CrudEntityRepository<Grade>
+ * The GradeRepository class provides access to the Grade entity in the database.
+ *
+ * This repository handles database interactions for the Grade entity, including finding, saving, and removing
+ * grades from the database.
  *
  * @method Grade|null find($id, $lockMode = null, $lockVersion = null)
  * @method Grade|null findOneBy(array $criteria, array $orderBy = null)
@@ -16,11 +19,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class GradeRepository extends CrudEntityRepository
 {
+
+    /**
+     * GradeRepository constructor.
+     *
+     * @param ManagerRegistry $registry The ManagerRegistry instance.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Grade::class);
     }
 
+    /**
+     * Save a grade entity to the database.
+     *
+     * @param Grade $entity The grade entity to save.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function save(Grade $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +45,12 @@ class GradeRepository extends CrudEntityRepository
         }
     }
 
+    /**
+     * Remove a grade entity from the database.
+     *
+     * @param Grade $entity The grade entity to remove.
+     * @param bool $flush Whether to flush changes immediately (default: false).
+     */
     public function remove(Grade $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);

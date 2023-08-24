@@ -26,12 +26,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\Translator;
 
+/**
+ * Controller for managing the EasyAdmin dashboard and menu items.
+ */
 class DashboardController extends AbstractDashboardController
 {
+
+    /**
+     * Construct the DashboardController.
+     *
+     * @param AdminUrlGenerator $adminUrlGenerator The AdminUrlGenerator service for generating admin URLs.
+     * @param FormationRepository $formationRepository The repository for Formation entities.
+     */
     public function __construct(private AdminUrlGenerator $adminUrlGenerator, FormationRepository $formationRepository) {
         $this->formationRepository = $formationRepository;
     }
 
+    /**
+     * Configure the dashboard settings.
+     *
+     * @return Dashboard The configured dashboard settings.
+     */
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -90,7 +105,11 @@ class DashboardController extends AbstractDashboardController
         ;
     }
 
-
+    /**
+     * Handle the index action for the admin dashboard.
+     *
+     * @return Response A response representing the redirection to a specific CRUD controller.
+     */
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -114,6 +133,11 @@ class DashboardController extends AbstractDashboardController
         //return $this->render('admin-dashboard/index.html.twig', ['formations'=>$this->formationRepository->findAll()]);
     }
 
+    /**
+     * Configure the menu items displayed in the dashboard.
+     *
+     * @return iterable An array of configured menu items.
+     */
     public function configureMenuItems(): iterable
     {
         $translator = new Translator('fr_FR');
